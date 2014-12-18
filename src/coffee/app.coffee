@@ -26,6 +26,14 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/'
       templateUrl: ''
       controller: ''
+    .state 'cover',   # confusion
+      url: '/cover/:id'
+      templateUrl: ''
+      controller: ''
+    .state 'search',
+      url: '/search/:keyword'
+      templateUrl: ''
+      controller: ''
     .state 'user'
       url: '/user/:id'
       templateUrl: ''
@@ -68,10 +76,6 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       controller: ''
     .state 'pop.songbook',
       url: '/explore'
-      templateUrl: ''
-      controller: ''
-    .state 'pop.cover',
-      url: '/cover/:id'
       templateUrl: ''
       controller: ''
     .state 'country',
