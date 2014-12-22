@@ -1,0 +1,24 @@
+#rank-new
+  .main-title
+    span
+      i.icon-hot
+      | WHAT'S NEW
+  ul.lists.new-lists
+    li.list.new-list(ng-repeat="")
+      ul
+        li.rank {{$index + 1}}
+        li.cover
+          img.lazy(alt='Cover image', data-src='http://{{imgCdn}}/user/{{list.user_id}}_medium.png')
+          img.lazy(alt='Cover image', data-src='http://{{imgCdn}}/cover/{{list.cover_id}}_medium.png')
+        li.description
+          ul
+            li.title 
+              a(ui-sref='cover({id: list.cover_id})') {{list.title}}
+            li.artist
+              a(ui-sref='user.rec({id: list.user_id})') {{list.artist}}
+        li.increasing
+          i(ng-class="{ 'icon-rise': list.last==-1 || $index <= list.last, 'icon-down': $index > list.last && list.last!=-1 }")
+        li.count
+          a.play(ng-click='playback($index,lists)')
+            i.icon-play
+          span.play-count {{list.play_count}}

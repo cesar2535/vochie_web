@@ -3,10 +3,10 @@ myApp = angular.module 'myApp',['ui.router','ngSanitize','ngCookies','ngAnimate'
 myApp.constant 'apiConfig',
   server: 'http://dev2.karaokecloud.com'
   # server: 'http://api2.karaokecloud.com'
-  popApp: 'lJWEvgxVzY'
-  popKey: 'uit8SbrlYwxVVvdaEvjOUFxRk48RZHQuZjBRv4dtzKpugDFV0Y'
-  countryApp: ''
-  countryKey: ''
+  popApp: '1bVMwIJS6h'
+  popKey: 'ZWgCj2EGOje1FUwd0KYX8Z93LFLvyQNyN4a76ONT93TNXp2801'
+  countryApp: '7I6DYCk84B'
+  countryKey: 'llAVWp9LerYtkOtDWIJkSP4Xt3AO0Epu11qWqyIEZG9jvBXrkG'
   rest_url: (route) ->
     return this.server + route
 
