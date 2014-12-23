@@ -1,6 +1,7 @@
 myApp = angular.module 'myApp',['ui.router','ngSanitize','ngCookies','ngAnimate','angulartics','angulartics.google.analytics','imageupload', 'seo']
 
 myApp.constant 'apiConfig',
+  firebase: 'https://singnshare.firebaseio.com'
   server: 'http://dev2.karaokecloud.com'
   # server: 'http://api2.karaokecloud.com'
   popApp: '1bVMwIJS6h'
