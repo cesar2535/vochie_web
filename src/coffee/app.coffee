@@ -9,6 +9,22 @@ myApp.constant 'apiConfig',
   countryKey: 'llAVWp9LerYtkOtDWIJkSP4Xt3AO0Epu11qWqyIEZG9jvBXrkG'
   rest_url: (route) ->
     return this.server + route
+  productCheck: (product) ->
+    product = product.toLowerCase()
+    apiKey = {}
+    switch product
+      when 'country'
+        apiKey.app = this.countryApp
+        apiKey.secret = this.countryKey
+        return apiKey
+      when 'pop'
+        apiKey.app = this.popApp
+        apiKey.secret = this.popKey
+        return apiKey
+      else
+        apiKey.app = this.popApp
+        apiKey.secret = this.popKey
+        return apiKey
 
 myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$analyticsProvider','$compileProvider', '$uiViewScrollProvider', ($locationProvider, $stateProvider, $urlRouterProvider, $analyticsProvider, $compileProvider, $uiViewScrollProvider) ->
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
