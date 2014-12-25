@@ -81,4 +81,45 @@ gulp.task('compass', function() {
   return stream;
 });
 
-gulp.task('default', ['build', 'server']);
+// Jade
+gulp.task('jade', function() {
+  return gulp.src([srcFiles.main, srcFiles.views], { base: 'src'})
+    .pipe(plumber({ errorHandler: errorHandler}))
+    .pipe(changed(buildDir.main, { extension: '.html' }))
+    .pipe(jade({ pretty: true }))
+    .pipe(gulp.dest(buildDir.main));
+});
+
+// Library
+gulp.task('lib', function() {
+  return gulp.src(srcFiles.assets, { base: 'src/assets'})
+    .pipe(gulp.dest(buildDir.main));
+});
+
+// Server
+gulp.task('server',['build'], function() {
+  browserSync({
+    server: {
+      baseDir: 'build'
+    },
+    port: 8080,
+  });
+});
+
+// Livereload
+gulp.task('livereload',['server'], function() {
+  var watchFiles = ['build/**/*.html', 'build/**/*.js', 'build/**/*.css'];
+  gulp.watch(srcFiles.main, ['jade']);
+  gulp.watch(srcFiles.views, ['jade']);
+  gulp.watch(srcFiles.coffee, ['coffee']);
+  gulp.watch(srcFiles.sass, ['compass']);
+  gulp.watch(srcFiles.assets, ['lib']);
+  gulp.watch(watchFiles, function (file) {
+    if (file.type === 'changed')
+      return reload(file.path);
+  });
+});
+
+gulp.task('compile', ['coffee', 'compass', 'jade']);
+gulp.task('build', ['compile', 'lib']);
+gulp.task('default', ['build', 'livereload']);
