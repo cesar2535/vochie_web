@@ -2,8 +2,8 @@ myApp = angular.module 'myApp',['ui.router','ngSanitize','ngCookies','ngAnimate'
 
 myApp.constant 'apiConfig',
   firebase: 'https://singnshare.firebaseio.com'
-  server: 'http://dev2.karaokecloud.com'
-  # server: 'http://api2.karaokecloud.com'
+  server: 'https://dev2.karaokecloud.com'
+  # server: 'https://api2.karaokecloud.com'
   popApp: '1bVMwIJS6h'
   popKey: 'ZWgCj2EGOje1FUwd0KYX8Z93LFLvyQNyN4a76ONT93TNXp2801'
   countryApp: '7I6DYCk84B'
@@ -73,7 +73,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       controller: ''
     .state 'pop',
       url: '/pop'
-      templateUrl: ''
+      templateUrl: 'views/pop/pages/layout.html'
       controller: ''
     .state: 'pop.home',
       url: '/home'

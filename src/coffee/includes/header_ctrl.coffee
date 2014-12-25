@@ -1,4 +1,4 @@
-myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', 
-($scope, $rootScope, $timeout, $q) ->
+myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state'
+($scope, $rootScope, $timeout, $q, $state) ->
   
 ]
