@@ -27,7 +27,8 @@ myApp.constant 'apiConfig',
         apiKey.secret = this.popKey
         return apiKey
 
-myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$analyticsProvider','$compileProvider', '$uiViewScrollProvider', ($locationProvider, $stateProvider, $urlRouterProvider, $analyticsProvider, $compileProvider, $uiViewScrollProvider) ->
+myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$analyticsProvider','$compileProvider', '$uiViewScrollProvider', 
+($locationProvider, $stateProvider, $urlRouterProvider, $analyticsProvider, $compileProvider, $uiViewScrollProvider) ->
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
   $urlRouterProvider.otherwise "/hot"
   $urlRouterProvider.when '/', '/hot'
@@ -51,7 +52,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/search/:keyword'
       templateUrl: ''
       controller: ''
-    .state 'user'
+    .state 'user',
       url: '/user/:id'
       templateUrl: ''
       controller: ''
@@ -59,15 +60,15 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/records'
       templateUrl: ''
       controller: ''
-    .state 'user.pin'
+    .state 'user.pin',
       url: '/pins'
       templateUrl: ''
       controller: ''
-    .state 'user.follow'
+    .state 'user.follow',
       url: '/follow'
       templateUrl: ''
       controller: ''
-    .state 'user.followed'
+    .state 'user.followed',
       url: '/followed'
       templateUrl: ''
       controller: ''
@@ -75,7 +76,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/pop'
       templateUrl: 'views/pop/pages/layout.html'
       controller: ''
-    .state: 'pop.home',
+    .state 'pop.home',
       url: '/home'
       templateUrl: ''
       controller: ''
@@ -87,7 +88,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/new'
       templateUrl: ''
       controller: ''
-    .state: 'pop.blog'
+    .state 'pop.blog',
       url: '/blog'
       templateUrl: ''
       controller: ''
