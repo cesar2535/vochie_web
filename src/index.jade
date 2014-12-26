@@ -26,22 +26,22 @@ html.no-js(lang='zh_tw', ng-app='myApp')
     // Open Graph data
     meta(ng-content='getTitle', property="og:title" content="Vochie")
     meta(property="og:type" content="website")
-    meta(ng-content='getCurrentURL', property="og:url" content="http://www.vochie.com")
-    meta(ng-content='getImg', property="og:image" content="http://www.vochie.com/images/default.png")
+    meta(ng-content='getCurrentURL', property="og:url" content="https://www.vochie.com")
+    meta(ng-content='getImg', property="og:image" content="https://www.vochie.com/images/default.png")
     meta(property="og:description" content="Vochie is Instant Singing Fun! Sing along now with up to thousands of karaoke songs. Share your recordings on Facebook and Twitter.")
     meta(property="og:site_name" content="Vochie")
     // Schema.org markup for Google+
     meta(itemprop="name" content="Vochie")
     meta(itemprop="description" content="Vochie is Instant Singing Fun! Sing along now with up to thousands of karaoke songs. Share your recordings on Facebook and Twitter.")
-    meta(itemprop="image" content="http://www.vochie.com/images/default.png")
+    meta(itemprop="image" content="https://www.vochie.com/images/default.png")
     // Twitter Card data
     meta(name="twitter:site" content="Vochie")
     meta(name="twitter:title" content="Vochie")
     meta(name="twitter:description" content="Vochie is Instant Singing Fun! Sing along now with up to thousands of karaoke songs. Share your recordings on Facebook and Twitter.")
     // Twitter summary card with large image must be at least 280x150px
-    meta(name="twitter:image:src" content="http://www.vochie.com")
+    meta(name="twitter:image:src" content="https://www.vochie.com")
 
-    link(href='http://fonts.googleapis.com/css?family=Monda:700', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Monda:700', rel='stylesheet')
     link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', rel='stylesheet')
     link(href='stylesheets/font-awesome.min.css', rel='stylesheet')
     link(href='stylesheets/skin_modern_silver.css', rel='stylesheet')
@@ -57,7 +57,7 @@ html.no-js(lang='zh_tw', ng-app='myApp')
     // if lt IE 9
     script.
       window.prerenderReady = false;
-    script(src='http://html5shiv.googlecode.com/svn/trunk/html5.js')
+    script(src='https://html5shiv.googlecode.com/svn/trunk/html5.js')
 
   body
 
@@ -69,7 +69,23 @@ html.no-js(lang='zh_tw', ng-app='myApp')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
     script(src='https://cdn.firebase.com/js/client/2.0.6/firebase.js')
     script(src='https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js')
-    script(src='scripts/lib/angular.min.js')
+    script(src='scripts/plugin.min.js')
+    script(src='scripts/lib/angular.js')
+    script(src='scripts/lib/angular-animate.js')
+    script(src='scripts/lib/angular-cookies.js')
+    script(src='scripts/lib/angular-loader.js')
+    script(src='scripts/lib/angular-mocks.js')
+    script(src='scripts/lib/angular-resource.js')
+    script(src='scripts/lib/angular-route.js')
+    script(src='scripts/lib/angular-sanitize.js')
+    script(src='scripts/lib/angular-scenario.js')
+    script(src='scripts/lib/angular-seo.js')
+    script(src='scripts/lib/angular-touch.js')
+    script(src='scripts/lib/angular-ui-router.js')
+    script(src='scripts/lib/angulartics.min.js')
+    script(src='scripts/lib/angulartics-ga.min.js')
+    script(src='scripts/lib/imageupload.js')
+    script(src='https://apis.google.com/js/plusone.js')
 
     // App scripts
     script(src='scripts/app/app.min.js')

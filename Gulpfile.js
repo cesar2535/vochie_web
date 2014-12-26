@@ -2,6 +2,7 @@ var gulp               = require('gulp');
 var browserSync        = require('browser-sync');
 var historyApiFallback = require('connect-history-api-fallback');
 var del                = require('del');
+var merge              = require('merge-stream');
 var reload             = browserSync.reload;
 
 var changed            = require('gulp-changed');
@@ -42,7 +43,7 @@ var errorHandler = function (err) {
 };
 
 gulp.task('clear', function() {
-  del.sync(['build/**/*.html', 'build/**/*.js', 'build/**/*.css']);
+  del.sync(buildDir.main);
 });
 
 // CoffeeScript
@@ -92,8 +93,23 @@ gulp.task('jade', function() {
 
 // Library
 gulp.task('lib', function() {
-  return gulp.src(srcFiles.assets, { base: 'src/assets'})
+  var plugin = gulp.src('src/assets/scripts/plugin/**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(concat('plugin.js'))
+    .pipe(rename({ suffix: '.min'}))
+    .pipe(uglify({ compress: true }))
+    .pipe(sourcemaps.write({
+      addComment: true,
+      sourceRoot: '/src'
+    }))
+    .pipe(gulp.dest(buildDir.scripts));
+
+  var others = gulp.src(['src/assets/**', '!src/assets/scripts/plugin', '!src/assets/scripts/plugin/**'], { base: 'src/assets'})
     .pipe(gulp.dest(buildDir.main));
+    
+  return merge(plugin, others);
+  // return gulp.src(srcFiles.assets, { base: 'src/assets'})
+  //   .pipe(gulp.dest(buildDir.main));
 });
 
 // Server
@@ -126,5 +142,5 @@ gulp.task('publish',['build'], function() {
 });
 
 gulp.task('compile', ['coffee', 'compass', 'jade']);
-gulp.task('build', ['compile', 'lib']);
+gulp.task('build', ['clean', 'compile', 'lib']);
 gulp.task('default', ['build', 'livereload']);

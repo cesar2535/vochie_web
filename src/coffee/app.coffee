@@ -78,7 +78,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       controller: ''
     .state 'pop.home',
       url: '/home'
-      templateUrl: ''
+      templateUrl: 'views/pop/pages/home.html'
       controller: ''
     .state 'pop.home.hot',
       url: '/hot'
@@ -98,7 +98,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       controller: ''
     .state 'country',
       url: '/country'
-      templateUrl: ''
+      templateUrl: 'views/country/pages/layout.html'
       controller: ''
 
 ]
