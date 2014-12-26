@@ -120,6 +120,11 @@ gulp.task('livereload',['server'], function() {
   });
 });
 
+gulp.task('publish',['build'], function() {
+  return gulp.src('build/**', { base: 'build' })
+    .pipe(gulp.dest('_public'));
+});
+
 gulp.task('compile', ['coffee', 'compass', 'jade']);
 gulp.task('build', ['compile', 'lib']);
 gulp.task('default', ['build', 'livereload']);
