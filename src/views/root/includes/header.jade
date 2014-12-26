@@ -1,0 +1,35 @@
+header#pop-header.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.btn.collapsed(data-target='.bs-navbar-collapse', data-toggle='collapse', type='button')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(ui-sref='root')
+        span.logo
+        | Vōchie
+    nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+      ul.nav.navbar-nav
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(ui-sref='root.blog') 
+            | Blog
+        li.dropdown
+          a.dropdown-toggle(data-toggle="dropdown")
+            | Apps
+            strong.caret
+          ul.dropdown-menu(role='menu')
+            li
+              a(ui-sref='pop') Pop
+            li
+              a(ui-sref='country') Country
+        li.dropdown
+          a.dropdown-toggle(data-toggle='dropdown')
+            | Login
+            strong.caret
+          ul.dropdown-menu(role='menu')
+            li
+              a(ng-click="login.withFacebook('pop')") Login with Facebook
+            li
+              a(ng-click="login.withTwitter('pop')") Login with Twitter
