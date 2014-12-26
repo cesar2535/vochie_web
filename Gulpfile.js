@@ -58,7 +58,7 @@ gulp.task('coffee', function() {
     .pipe(uglify({ compress: true }))
     .pipe(sourcemaps.write({
       addComment: true,
-      sourceRoot: '/src'
+      sourceRoot: '/src/scripts'
     }))
     .pipe(gulp.dest(buildDir.scripts));
 });
@@ -100,7 +100,7 @@ gulp.task('lib', function() {
     .pipe(uglify({ compress: true }))
     .pipe(sourcemaps.write({
       addComment: true,
-      sourceRoot: '/src'
+      sourceRoot: '/src/assets/scripts/plugin'
     }))
     .pipe(gulp.dest(buildDir.scripts));
 
@@ -116,7 +116,10 @@ gulp.task('lib', function() {
 gulp.task('server',['build'], function() {
   browserSync({
     server: {
-      baseDir: 'build'
+      baseDir: 'build',
+      middleware: [
+        historyApiFallback
+      ]
     },
     port: 8080,
   });
@@ -142,5 +145,5 @@ gulp.task('publish',['build'], function() {
 });
 
 gulp.task('compile', ['coffee', 'compass', 'jade']);
-gulp.task('build', ['clean', 'compile', 'lib']);
+gulp.task('build', ['clear', 'compile', 'lib']);
 gulp.task('default', ['build', 'livereload']);
