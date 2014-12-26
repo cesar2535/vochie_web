@@ -1,5 +1,8 @@
 myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig',
 ($rootScope, $http, $timeout, $q, apiConfig) ->
+  # Initial login user's info
+  $rootScope.user = {}
+
   firebaseRef = new Firebase apiConfig.firebase
   q = $q.defer()
   promise = q.promise
@@ -31,7 +34,7 @@ myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig
       console.error errorRes
       return errorRes.data
 
-  withFacebook: (product = 'pop') ->
+  loginWithFacebook: (product = 'pop') ->
     firebaseSimpleLogin.login 'facebook',
       rememberMe: true
       scope: "email,publish_actions,user_friends,read_friendlists"
@@ -40,7 +43,7 @@ myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig
       .then (successServerRes) ->
         $rootScope.user.accessToken = successServerRes.data
 
-  withTwitter: (product = 'pop') ->
+  loginWithTwitter: (product = 'pop', cb) ->
     apiKey = apiConfig.productCheck product
     twitter = window.open apiConfig.rest_url('/user/twitter?app=' + apiKey.app + '&key=' + apiKey.secret), 'twitter', 'height=400, width=600'
     window.onmessage = (e) ->
