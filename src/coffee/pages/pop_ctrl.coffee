@@ -11,5 +11,16 @@ myApp.controller 'PopCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
 
   RankFctry.getNewCovers()
   .then (successRes) ->
-    console.log  successRes
+    if successRes.data
+      angular.forEach successRes.data, (cover) ->
+        if cover.song
+          $scope.playlist.newRank.push 
+            coverId: cover._id
+            userId: cover.user_id
+            title: cover.song.Title
+            artist: cover.user_name
+            m4a: cover.path
+            playCount: cover.play_count
+            likes: cover.likes
+            last: cover.last
 ]
