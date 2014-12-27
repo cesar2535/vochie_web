@@ -16,7 +16,9 @@ header#country-header.navbar.navbar-default
           a(ui-sref='root.blog') Blog
         li
           a(ui-sref='pop') Vōchie Pop
-        li.dropdown
+        li
+          a(ui-sref='country.songbook') SongBook
+        li.dropdown(ng-hide="user._id")
           a.dropdown-toggle(data-toggle='dropdown')
             | Login
             strong.caret
@@ -25,3 +27,12 @@ header#country-header.navbar.navbar-default
               a(ng-click="login.withFacebook('pop')") Login with Facebook
             li
               a(ng-click="login.withTwitter('pop')") Login with Twitter
+        li.dropdown(ng-show="user._id")
+          a.dropdown-toggle(data-toggle='dropdown')
+            | {{user.name}}
+            strong.caret
+          ul.dropdown-menu
+            li
+              a(ui-sref="user({id: user._id })") Profile
+            li
+              a(ng-click="logout()") Logout

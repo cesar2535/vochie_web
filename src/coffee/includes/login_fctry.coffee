@@ -1,7 +1,8 @@
-myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig',
-($rootScope, $http, $timeout, $q, apiConfig) ->
+myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieStore', 'apiConfig', 'UserFctry',
+($rootScope, $http, $timeout, $q, $cookieStore, apiConfig, UserFctry) ->
   # Initial login user's info
   $rootScope.user = {}
+  UserFctry.checkUserLogin()
 
   firebaseRef = new Firebase apiConfig.firebase
   q = $q.defer()
@@ -42,6 +43,8 @@ myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig
       oAuthFacebookWithServer successRes.accessToken, product
       .then (successServerRes) ->
         $rootScope.user.accessToken = successServerRes.data
+        $rootScope.user.provider = 'facebook'
+        return successServerRes.data
 
   loginWithTwitter: (product = 'pop', cb) ->
     apiKey = apiConfig.productCheck product
@@ -49,5 +52,11 @@ myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig
     window.onmessage = (e) ->
       if e.data.token?
         $rootScope.user.accessToken = e.data.token
+        $rootScope.user.provider = 'twitter'
         cb(e.data)
+
+  logout: ->
+    $rootScope.user = {}
+    $cookieStore.put 'currentUser', $rootScope.user
+    console.log $cookieStore.get 'currentUser'
 ]
