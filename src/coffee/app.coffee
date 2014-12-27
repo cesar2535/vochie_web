@@ -2,8 +2,8 @@ myApp = angular.module 'myApp',['ui.router','ngSanitize','ngCookies','ngAnimate'
 
 myApp.constant 'apiConfig',
   firebase: 'https://singnshare.firebaseio.com'
-  server: 'https://dev2.karaokecloud.com'
-  # server: 'https://api2.karaokecloud.com'
+  # server: 'https://dev2.karaokecloud.com'
+  server: 'https://api2.karaokecloud.com'
   app: 'lJWEvgxVzY'
   key: 'uit8SbrlYwxVVvdaEvjOUFxRk48RZHQuZjBRv4dtzKpugDFV0Y'
   popApp: '1bVMwIJS6h'
@@ -17,14 +17,17 @@ myApp.constant 'apiConfig',
     apiKey = {}
     switch product
       when 'country'
+        apiKey.name = 'country'
         apiKey.app = this.countryApp
         apiKey.secret = this.countryKey
         return apiKey
       when 'pop'
+        apiKey.name = 'pop'
         apiKey.app = this.popApp
         apiKey.secret = this.popKey
         return apiKey
       else
+        apiKey.name = 'pop'
         apiKey.app = this.popApp
         apiKey.secret = this.popKey
         return apiKey
@@ -33,7 +36,9 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
 ($locationProvider, $stateProvider, $urlRouterProvider, $analyticsProvider, $compileProvider, $uiViewScrollProvider) ->
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
   $urlRouterProvider.otherwise "/"
-  # $urlRouterProvider.when '/', '/hot'
+  $urlRouterProvider.when '/', '/home'
+  $urlRouterProvider.when '/pop', '/pop/home'
+  $urlRouterProvider.when '/country', '/country/home'
   $locationProvider.html5Mode true
   $locationProvider.hashPrefix "!"
   $analyticsProvider.virtualPageviews(false)
@@ -44,11 +49,14 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/'
       templateUrl: 'views/root/pages/layout.html'
       controller: 'RootCtrl'
+    .state 'root.home',
+      url: 'home'
+      templateUrl: 'views/root/pages/home.html'
     .state 'root.blog',
       url: 'blog'
       templateUrl: 'views/root/pages/blog.html'
       controller: ''
-    .state 'root.cover',   # confusion
+    .state 'cover',   # confusion
       url: '/cover/:id'
       templateUrl: ''
       controller: ''
@@ -58,8 +66,8 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       controller: ''
     .state 'user',
       url: '/user/:id'
-      templateUrl: ''
-      controller: ''
+      templateUrl: 'views/user/user.html'
+      controller: 'UserCtrl'
     .state 'user.rec',
       url: '/records'
       templateUrl: ''
@@ -100,4 +108,12 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/country'
       templateUrl: 'views/country/pages/layout.html'
       controller: ''
+    .state 'country.home',
+      url: '/home'
+      templateUrl: 'views/country/pages/home.html'
+      controller: ''
+    .state 'country.songbook',
+      url: '/explore'
+      templateUrl: '/views/songbook/songbook.html'
+      controller: 'ExploreCtrl'
 ]
