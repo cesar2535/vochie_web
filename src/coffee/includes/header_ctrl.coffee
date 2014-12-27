@@ -1,6 +1,5 @@
 myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', '$cookieStore', 'LoginFctry', 'UserFctry'
 ($scope, $rootScope, $timeout, $q, $state, $cookieStore, LoginFctry, UserFctry) ->
-
   $scope.login = 
     withFacebook: (product) ->
       LoginFctry.loginWithFacebook product

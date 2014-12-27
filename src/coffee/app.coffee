@@ -35,7 +35,7 @@ myApp.constant 'apiConfig',
 myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$analyticsProvider','$compileProvider', '$uiViewScrollProvider', 
 ($locationProvider, $stateProvider, $urlRouterProvider, $analyticsProvider, $compileProvider, $uiViewScrollProvider) ->
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
-  $urlRouterProvider.otherwise "/"
+  $urlRouterProvider.otherwise "/404"
   $urlRouterProvider.when '/', '/home'
   $urlRouterProvider.when '/pop', '/pop/home'
   $urlRouterProvider.when '/country', '/country/home'
@@ -45,6 +45,10 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
   $uiViewScrollProvider.useAnchorScroll()
 
   $stateProvider
+    .state 'notfound',
+      url: '/404'
+      templateUrl: 'views/not_found.html'
+      controller: 'NotFoundCtrl'
     .state 'root',
       url: '/'
       templateUrl: 'views/root/pages/layout.html'
@@ -70,8 +74,8 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       controller: 'UserCtrl'
     .state 'user.rec',
       url: '/records'
-      templateUrl: ''
-      controller: ''
+      templateUrl: 'views/user/recording.html'
+      controller: 'RecordingCtrl'
     .state 'user.pin',
       url: '/pins'
       templateUrl: ''
@@ -87,7 +91,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
     .state 'pop',
       url: '/pop'
       templateUrl: 'views/pop/pages/layout.html'
-      controller: ''
+      controller: 'PopCtrl'
     .state 'pop.home',
       url: '/home'
       templateUrl: 'views/pop/pages/home.html'
@@ -107,7 +111,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
     .state 'country',
       url: '/country'
       templateUrl: 'views/country/pages/layout.html'
-      controller: ''
+      controller: 'CountryCtrl'
     .state 'country.home',
       url: '/home'
       templateUrl: 'views/country/pages/home.html'
