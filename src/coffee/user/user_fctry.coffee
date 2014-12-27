@@ -1,7 +1,9 @@
-myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieStore', 'apiConfig',
-($rootScope, $http, $timeout, $q, $cookieStore, apiConfig) ->
+myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieStore', 'apiConfig', 'LoginFctry'
+($rootScope, $http, $timeout, $q, $cookieStore, apiConfig, LoginFctry) ->
+  console.log 'UserFctry'
   checkUserLogin: ->
     user = $cookieStore.get 'currentUser'
+    console.log user
     this.getUserData undefined, user.accessToken
     .then (successRes) ->
       if successRes.msg is 'token error'
@@ -10,11 +12,15 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
         $cookieStore.put 'currentUser', {}
       else
         $rootScope.user = user
+        return successRes
 
-  getUserData: (userId, accessToken = $rootScope.user.accessToken) ->
+  getUserData: (userId, accessToken) ->
     subUrl = ''
-    if userId
+    if userId?
       subUrl = '/' + userId
+      accessToken = undefined
+    else if accessToken is undefined
+      accessToken = $rootScope.user.accessToken
     $http
       url: apiConfig.rest_url '/user/data' + subUrl
       params:

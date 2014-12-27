@@ -1,5 +1,6 @@
-myApp.factory 'ExploreFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig',
-($rootScope, $http, $timeout, $q, apiConfig) ->
+myApp.factory 'ExploreFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig', 'UserFctry',
+($rootScope, $http, $timeout, $q, apiConfig, UserFctry) ->
+  console.log 'ExploreFctry'
   canceler = undefined
   getGenreList: (product = 'pop') ->
     apiKey = apiConfig.productCheck product

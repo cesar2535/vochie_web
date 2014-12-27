@@ -11,7 +11,7 @@ myApp.controller 'ExploreCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$sta
       name: 'country'
     $scope.mainTitle = 'Vōchie Country Song Book'
 
-  initialSongbookList = (product) ->
+  initializeSongbookList = (product) ->
     ExploreFctry.getGenreList product
     .then (successRes) ->
       $scope.genreList = successRes
@@ -19,5 +19,5 @@ myApp.controller 'ExploreCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$sta
     .then (successRes) ->
       console.log successRes
 
-  initialSongbookList $rootScope.product.name
+  initializeSongbookList $rootScope.product.name
 ]

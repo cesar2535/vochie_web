@@ -1,8 +1,8 @@
-myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieStore', 'apiConfig', 'UserFctry',
-($rootScope, $http, $timeout, $q, $cookieStore, apiConfig, UserFctry) ->
+myApp.factory 'LoginFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieStore', 'apiConfig',
+($rootScope, $http, $timeout, $q, $cookieStore, apiConfig) ->
+  console.log 'LoginFctry'
   # Initial login user's info
   $rootScope.user = {}
-  UserFctry.checkUserLogin()
 
   firebaseRef = new Firebase apiConfig.firebase
   q = $q.defer()

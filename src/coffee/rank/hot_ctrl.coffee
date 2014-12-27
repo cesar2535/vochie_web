@@ -1,5 +1,5 @@
-myApp.controller 'HotCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', 'apiConfig'
-($scope, $rootScope, $timeout, $q, $state, apiConfig) ->
+myApp.controller 'HotCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', 'apiConfig', 'RankFctry',
+($scope, $rootScope, $timeout, $q, $state, apiConfig, RankFctry) ->
   if $state.current.name is 'pop.hot'
     $rootScope.product =
       name: 'pop'
