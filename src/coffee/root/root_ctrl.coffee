@@ -1,3 +1,3 @@
-myApp.controller 'RootCtrl', ['$scope', '$rootScope', '$timeout', '$q',
-($scope, $rootScope, $timeout, $q) ->
+myApp.controller 'RootCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
+($scope, $rootScope, $timeout, $q, $state) ->
 ]
