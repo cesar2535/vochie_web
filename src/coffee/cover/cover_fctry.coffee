@@ -56,6 +56,7 @@ myApp.factory 'CoverFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig
         page: page
         field: 'user_id'
         value: userId
+        token: $rootScope.user.accessToken
       method: 'get'
     .then (successRes) ->
       console.info "----- Get User's Covers -----"
