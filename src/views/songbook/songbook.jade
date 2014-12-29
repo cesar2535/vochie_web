@@ -2,5 +2,7 @@
   .header
     h1.main-title {{mainTitle}}
     p Karaoke renditions. Not the original artists.
-    h3.description explore your favorite songs!
+    h3.description
+      | explore 
+      a(ui-sref="{{description.link}}") {{description.text}}
   #songbook-table

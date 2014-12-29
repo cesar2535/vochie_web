@@ -6,10 +6,16 @@ myApp.controller 'ExploreCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$sta
     $rootScope.product = 
       name: 'pop'
     $scope.mainTitle = 'Vōchie Pop Song Book'
+    $scope.description = 
+      text: 'more country songs'
+      link: "country.songbook"
   else if $state.current.name.search('country') >= 0
     $rootScope.product =
       name: 'country'
     $scope.mainTitle = 'Vōchie Country Song Book'
+    $scope.description = 
+      text: 'more pop songs'
+      link: "pop.songbook"
 
   initializeSongbookList = (product) ->
     ExploreFctry.getGenreList product
