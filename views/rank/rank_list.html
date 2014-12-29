@@ -1,0 +1,25 @@
+
+<div class="rank">
+  <div class="main-title"><span><i ng-class="{ 'icon-hot': rank.type == 'hot', 'icon-new': rank.type == 'new' }"></i>{{rank.title}}</span></div>
+  <div ng-if="rank.type == 'hot'" class="sub-tab">
+    <button ng-class="{ active: rank.subType=='daily' }" ng-click="changeSubType('daily')" class="tab-btn">Daily</button>
+    <button ng-class="{ active: rank.subType=='weekly' }" ng-click="changeSubType('weekly')" class="tab-btn">Weekly</button>
+    <button ng-class="{ active: rank.subType=='monthly' }" ng-click="changeSubType('monthly')" class="tab-btn">Monthly</button>
+  </div>
+  <ul ng-class="{ hot: rank.type == 'hot', new: rank.type == 'new' }" class="rank-list">
+    <li ng-repeat="item in rank.list" class="rank-item">
+      <ul class="item-group">
+        <li class="rank-num">{{$index + 1}}</li>
+        <li hide-lazy="" class="cover"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png" class="lazy"/></li>
+        <li class="description">
+          <ul>
+            <li class="title"><a ui-sref="cover({id: item.coverId})">{{item.title}}</a></li>
+            <li class="artist"><a ui-sref="user.rec({id: item.userId})">{{item.artist}}</a></li>
+          </ul>
+        </li>
+        <li class="count"><a ng-click="playback($index,lists)" class="play"><i class="icon-play"></i></a><span class="play-count">{{item.playCount}}</span></li>
+        <li class="increasing"><i ng-class="{ 'icon-rise': item.last==-1 || $index &lt;= item.last, 'icon-down': $index &gt; item.last &amp;&amp; item.last!=-1 }"></i></li>
+      </ul>
+    </li>
+  </ul>
+</div>

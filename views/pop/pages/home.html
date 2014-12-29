@@ -1,0 +1,15 @@
+
+<div id="home" class="container">
+  <div class="carousel">
+    <slick dots="true" autoplay="true" speed="3000">
+      <div ng-repeat="i in [0, 1, 2, 3 , 4]" class="slide">
+        <h3>{{$index}}</h3>
+      </div>
+    </slick>
+  </div>
+  <div id="left-column">
+    <hot-rank></hot-rank>
+    <new-rank></new-rank>
+  </div>
+  <div id="right-column"></div>
+</div>
