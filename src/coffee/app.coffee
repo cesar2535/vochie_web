@@ -118,7 +118,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       controller: ''
     .state 'country.songbook',
       url: '/explore'
-      templateUrl: '/views/songbook/songbook.html'
+      templateUrl: 'views/songbook/songbook.html'
       controller: 'ExploreCtrl'
 ]
 
