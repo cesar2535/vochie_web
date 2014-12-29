@@ -607,6 +607,7 @@ header .container-fluid {
 }
 header .container-fluid .navbar-brand {
   color: #f1f1f1;
+  font-weight: 700;
 }
 header .container-fluid .navbar-nav > li > a {
   color: #f1f1f1;
@@ -627,6 +628,11 @@ header .container-fluid .navbar-nav > li > a:hover {
   background-color: #3a1f09;
 }
 
+footer {
+  background-color: #29324d;
+  height: 300px;
+}
+
 .carousel {
   background: lightblue;
   width: 100%;
@@ -644,15 +650,58 @@ header .container-fluid .navbar-nav > li > a:hover {
 }
 
 #left-column {
-  width: 74.57627%;
+  width: 66.10169%;
   float: left;
   margin-right: 1.69492%;
 }
 
 #right-column {
-  width: 23.72881%;
-  float: left;
-  margin-right: 1.69492%;
+  width: 32.20339%;
+  float: right;
+  margin-right: 0;
+}
+#right-column div {
+  margin-bottom: 20px;
+}
+#right-column .visit {
+  height: 100px;
+  background-color: #fe5a27;
+  font-size: 2em;
+  font-weight: 700;
+}
+#right-column .visit a {
+  width: 100%;
+  height: 100%;
+  color: #f1f1f1;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#right-column .twitter-box, #right-column .advertising-box, #right-column .facebook-box {
+  height: 300px;
+  font-size: 2em;
+  color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#right-column .advertising-box {
+  background-color: #ff0066;
+  text-align: center;
+}
+#right-column .twitter-box {
+  background-color: #43bfe1;
+}
+#right-column .facebook-box {
+  background-color: #3b5998;
+}
+
+#songbook .header {
+  text-align: center;
+}
+#songbook .header > .main-title, #songbook .header > .description {
+  text-transform: uppercase;
 }
 
 /* Modules */
