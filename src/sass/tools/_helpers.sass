@@ -2,6 +2,17 @@
    Tools/Helpers
    =========================== */
 
+/* Main title */
+%main-title
+  font-size: 1.5em
+  line-height: 1em
+  height: 41px
+  +box-sizing(border-box)
+  padding: 8px
+  margin-bottom: 8px
+  border-bottom: 2px solid #000
+  i
+    margin-right: 10px
 
 /* Image replacement */
  
@@ -95,6 +106,16 @@
 
 .ul-list-inline
   @include ul-list-inline()
+
+/* =Images
+ * -------------------
+ */
+.lazy-loaded
+  +transition-property(opacity)
+  +transition-duration(0.3s)
+  opacity: 1
+.lazy-hidden
+  opacity: 0
 
 /* =Fonts
  * ------------------- 

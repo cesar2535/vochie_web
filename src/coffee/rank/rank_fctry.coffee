@@ -1,6 +1,6 @@
 myApp.factory 'RankFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig',
 ($rootScope, $http, $timeout, $q, apiConfig) ->
-  getPlaycountRank: (type) ->
+  getPlayCountRank: (type) ->
     $http
       url: apiConfig.rest_url '/rank/cover/' + type
       method: 'get'

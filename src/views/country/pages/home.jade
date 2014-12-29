@@ -1,2 +1,9 @@
 #home.container
-  h1 Country Home
+  .carousel
+    slick(style="width: 80%; margin: 0 auto", dots="true", autoplay="true", speed="3000")
+      div(ng-repeat='i in [0, 1, 2, 3 , 4]', style="text-align: center")
+        h3 {{$index}}
+  #left-column
+    hot-rank
+    new-rank
+  #right-column

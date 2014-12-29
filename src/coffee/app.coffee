@@ -1,4 +1,4 @@
-myApp = angular.module 'myApp',['ui.router','ngSanitize','ngCookies','ngAnimate','angulartics','angulartics.google.analytics','imageupload', 'seo']
+myApp = angular.module 'myApp',['ui.router','ngSanitize','ngCookies','ngAnimate','angulartics','angulartics.google.analytics','imageupload', 'seo', 'ui.bootstrap', 'slick']
 
 myApp.constant 'apiConfig',
   firebase: 'https://singnshare.firebaseio.com'
@@ -120,4 +120,18 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/explore'
       templateUrl: '/views/songbook/songbook.html'
       controller: 'ExploreCtrl'
+]
+
+myApp.directive 'lazy', ['$timeout', ($timeout) ->
+  restrict: 'C',
+  link: (scope, element) ->
+    $timeout ->
+      $(element).lazyLoadXT({edgeY: '200'})
+    , 0
+]
+
+myApp.directive 'hideLazy', ['$timeout', ($timeout) ->
+  (scope, element, attrs) ->
+    $(element).children('img').error ->
+      $(this).hide()
 ]

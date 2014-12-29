@@ -1,0 +1,28 @@
+.rank
+  .main-title
+    span
+      i(ng-class="{ 'icon-hot': rank.type == 'hot', 'icon-new': rank.type == 'new' }")
+      | {{rank.title}}
+  .sub-tab(ng-if="rank.type == 'hot'")
+    button.tab-btn(ng-class="{ active: rank.subType=='daily' }", ng-click="changeSubType('daily')") Daily
+    button.tab-btn(ng-class="{ active: rank.subType=='weekly' }", ng-click="changeSubType('weekly')") Weekly
+    button.tab-btn(ng-class="{ active: rank.subType=='monthly' }", ng-click="changeSubType('monthly')") Monthly
+  ul.rank-list(ng-class="{ hot: rank.type == 'hot', new: rank.type == 'new' }")
+    li.rank-item(ng-repeat="item in rank.list")
+      ul.item-group
+        li.rank-num {{$index + 1}}
+        li.cover(hide-lazy='')
+          img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png')
+          img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png')
+        li.description
+          ul
+            li.title
+              a(ui-sref='cover({id: item.coverId})') {{item.title}}
+            li.artist
+              a(ui-sref='user.rec({id: item.userId})') {{item.artist}}
+        li.count
+          a.play(ng-click='playback($index,lists)')
+            i.icon-play
+          span.play-count {{item.playCount}}
+        li.increasing
+          i(ng-class="{ 'icon-rise': item.last==-1 || $index <= item.last, 'icon-down': $index > item.last && item.last!=-1 }")

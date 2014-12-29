@@ -1,0 +1,85 @@
+.rank-list
+  +span(12)
+  &.hot
+    border-top: 2px solid #000
+  .rank-item
+    margin-top: 0.5em
+    padding-bottom: 0.5em
+    border-bottom: 1px solid #000
+
+    .item-group > li
+      display: inline-block
+      vertical-align: middle
+      &.increasing, &.count
+        float: right
+        display: block
+      &.rank-num, &.increasing, &.cover, &.count
+        width: 48px
+        height: 48px
+        line-height: 48px
+        text-align: center
+        font-size: 24px
+      &.rank-num
+        font-family: "Monda", sans-serif
+        text-align: center
+        font-size: 30px
+        color: #dd5778
+        width: 60px
+      &.cover
+        color: #f1f1f1
+        background: url(../images/default.png)
+        background-size: cover
+        position: relative
+        img
+          width: 100%
+          height: 100%
+          position: absolute
+          top: 0
+          left: 0
+      &.description
+        width: 60%
+        padding-left: 1em
+        +box-sizing(border-box)
+        .title, .artist
+          height: 24px
+          text-overflow: ellipsis
+          white-space: nowrap
+          overflow: hidden
+          a
+            text-decoration: none
+        .title a
+          color: #000
+          font-size: 18px
+        .artist a
+          color: #666
+
+      &.increasing
+        font-size: 30px
+        margin-top: 5px
+        margin-right: 20px
+        width: 30px
+        height: 30px
+        line-height: 40px
+        border-radius: 50%
+        .icon-rise
+          color: #99dc51
+        .icon-down
+          color: #dd577a
+      &.count
+        width: 80px
+        font-size: 16px
+        color: #333
+        text-align: left
+        .play
+          cursor: pointer
+          display: inline-block
+          vertical-align: middle
+          font-size: 36px
+          color: #333
+          text-decoration: none
+        .play-count
+          display: inline-block
+          vertical-align: middle
+          height: 36px
+          line-height: 36px
+          margin-left: 5px
