@@ -60,31 +60,31 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: 'blog'
       templateUrl: 'views/root/pages/blog.html'
       controller: ''
-    .state 'cover',   # confusion
-      url: '/cover/:id'
+    .state 'root.cover',   # confusion
+      url: 'cover/:id'
       templateUrl: ''
       controller: ''
     .state 'search',
       url: '/search/:keyword'
       templateUrl: ''
       controller: ''
-    .state 'user',
-      url: '/user/:id'
+    .state 'root.user',
+      url: 'user/:id'
       templateUrl: 'views/user/user.html'
       controller: 'UserCtrl'
-    .state 'user.rec',
+    .state 'root.user.rec',
       url: '/records'
       templateUrl: 'views/user/recording.html'
       controller: 'RecordingCtrl'
-    .state 'user.pin',
+    .state 'root.user.pin',
       url: '/pins'
       templateUrl: ''
       controller: ''
-    .state 'user.follow',
+    .state 'root.user.follow',
       url: '/follow'
       templateUrl: ''
       controller: ''
-    .state 'user.followed',
+    .state 'root.user.followed',
       url: '/followed'
       templateUrl: ''
       controller: ''

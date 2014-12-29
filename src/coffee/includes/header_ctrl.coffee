@@ -1,5 +1,8 @@
-myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', '$cookieStore', 'LoginFctry', 'UserFctry'
-($scope, $rootScope, $timeout, $q, $state, $cookieStore, LoginFctry, UserFctry) ->
+myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', '$location', '$cookieStore', 'LoginFctry', 'UserFctry'
+($scope, $rootScope, $timeout, $q, $state, $location, $cookieStore, LoginFctry, UserFctry) ->
+
+  $scope.location = ''
+
   $scope.login = 
     withFacebook: (product) ->
       LoginFctry.loginWithFacebook product
@@ -29,4 +32,22 @@ myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$stat
 
   $scope.logout = ->
     LoginFctry.logout()
+
+  $rootScope.$on '$locationChangeSuccess', ->
+    path = $location.path()
+    console.log "path search: #{path}"
+    console.log path.search('blog')
+    if path.search('blog') > 0
+      $scope.location = 'blog'
+      console.log 1
+    else if path.search('explore') > 0
+      $scope.location = 'songbook'
+      console.log 2
+    else if $rootScope.user? and path.split('/')[2] is $rootScope.user._id
+      $scope.location = 'user'
+      console.log 3
+    else
+      $scope.location = ''
+      console.log 4
+    console.log $scope.location
 ]

@@ -6,18 +6,18 @@ header#pop-header.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(ui-sref='pop')
+      a.navbar-brand(ui-sref='pop', ng-click="nav.active('home')")
         span.logo
         | Vōchie Pop
     nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
       ul.nav.navbar-nav
       ul.nav.navbar-nav.navbar-right
         li
-          a(ui-sref='root.blog') Blog
+          a(ui-sref='root.blog', ng-class="{ active: location == 'blog' }") Blog
         li
           a(ui-sref='country') Vōchie Country
         li
-          a(ui-sref='pop.songbook') SongBook
+          a(ui-sref='pop.songbook', ng-class="{ active: location == 'songbook' }") SongBook
         li.dropdown(ng-hide="user._id")
           a.dropdown-toggle(data-toggle='dropdown')
             | Login
@@ -28,11 +28,11 @@ header#pop-header.navbar.navbar-default
             li
               a(ng-click="login.withTwitter('pop')") Login with Twitter
         li.dropdown(ng-show="user._id")
-          a.dropdown-toggle(data-toggle='dropdown')
+          a.dropdown-toggle(data-toggle='dropdown', ng-class="{ active: location == 'user' }")
             | {{user.name}}
             strong.caret
           ul.dropdown-menu
             li
-              a(ui-sref="user({id: user._id })") Profile
+              a(ui-sref="root.user({id: user._id })") Profile
             li
               a(ng-click="logout()") Logout

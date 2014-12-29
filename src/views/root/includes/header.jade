@@ -13,7 +13,7 @@ header#pop-header.navbar.navbar-default
       ul.nav.navbar-nav
       ul.nav.navbar-nav.navbar-right
         li
-          a(ui-sref='root.blog') 
+          a(ui-sref='root.blog', ng-class="{ active: location == 'blog' }") 
             | Blog
         li.dropdown
           a.dropdown-toggle(data-toggle="dropdown")
@@ -34,11 +34,11 @@ header#pop-header.navbar.navbar-default
             li
               a(ng-click="login.withTwitter('pop')") Login with Twitter
         li.dropdown(ng-show="user._id")
-          a.dropdown-toggle(data-toggle='dropdown')
+          a.dropdown-toggle(data-toggle='dropdown', ng-class="{ active: location == 'user' }")
             | {{user.name}}
             strong.caret
           ul.dropdown-menu
             li
-              a(ui-sref="user({id: user._id })") Profile
+              a(ui-sref="root.user({id: user._id })") Profile
             li
               a(ng-click="logout()") Logout
