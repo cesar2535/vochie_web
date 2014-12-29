@@ -3,7 +3,9 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
   console.log 'UserFctry'
   checkUserLogin: ->
     user = $cookieStore.get 'currentUser'
-    console.log user
+    if user is undefined
+      console.error 'No login user'
+      return
     this.getUserData undefined, user.accessToken
     .then (successRes) ->
       if successRes.msg is 'token error'
