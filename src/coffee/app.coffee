@@ -35,7 +35,7 @@ myApp.constant 'apiConfig',
 myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$analyticsProvider','$compileProvider', '$uiViewScrollProvider', 
 ($locationProvider, $stateProvider, $urlRouterProvider, $analyticsProvider, $compileProvider, $uiViewScrollProvider) ->
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
-  $urlRouterProvider.otherwise "/404"
+  $urlRouterProvider.otherwise "/home"
   $urlRouterProvider.when '/', '/home'
   $urlRouterProvider.when '/pop', '/pop/home'
   $urlRouterProvider.when '/country', '/country/home'
