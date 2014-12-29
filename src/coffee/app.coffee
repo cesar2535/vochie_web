@@ -63,7 +63,7 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
     .state 'root.cover',   # confusion
       url: 'cover/:id'
       templateUrl: ''
-      controller: ''
+      controller: 'views/cover/cover.html'
     .state 'search',
       url: '/search/:keyword'
       templateUrl: ''
