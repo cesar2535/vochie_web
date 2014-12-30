@@ -609,6 +609,7 @@ header .container-fluid {
 header .container-fluid .navbar-brand {
   color: #f1f1f1;
   font-weight: 700;
+  padding: 5px 10px;
 }
 header .container-fluid .navbar-nav > li > a {
   color: #f1f1f1;
@@ -622,6 +623,15 @@ header .container-fluid .navbar-nav > li > a:hover {
 }
 header .navbar-header .navbar-toggle .icon-bar {
   background-color: #f1f1f1;
+}
+header .navbar-header .logo {
+  background: url("../images/logo.png");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #pop-header .container-fluid {
