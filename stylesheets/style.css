@@ -764,6 +764,7 @@ footer {
 }
 @media (min-width: 62em) {
   #app-pop .container .intro-block .download img, #app-country .container .intro-block .download img {
+    width: auto;
     height: 55px;
   }
 }
