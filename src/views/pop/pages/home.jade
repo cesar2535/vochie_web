@@ -9,8 +9,12 @@
   //-           p {{slide.text}}
   .carousel
     slick(dots="true", autoplay="true", speed="3000")
-      div.slide(ng-repeat='i in [0, 1, 2, 3 , 4]')
-        h3 {{$index}}
+      div.slide
+        a(ui-sref='pop.home')
+          img(src='images/banner_1.png')
+      div.slide
+        a(ui-sref='country.home')
+          img(src='images/banner_2.png')
   #left-column
     hot-rank
     new-rank
