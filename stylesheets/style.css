@@ -842,18 +842,39 @@ footer {
 }
 .carousel slick .slide {
   text-align: center;
+  height: 300px;
+}
+.carousel slick .slide img {
+  margin: 0 auto;
+  height: 100%;
 }
 
 #left-column {
-  width: 66.10169%;
+  width: 100%;
   float: left;
-  margin-right: 1.69492%;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (min-width: 62em) {
+  #left-column {
+    width: 66.10169%;
+    float: left;
+    margin-right: 1.69492%;
+  }
 }
 
 #right-column {
-  width: 32.20339%;
-  float: right;
+  width: 100%;
+  float: left;
+  margin-left: 0;
   margin-right: 0;
+}
+@media (min-width: 62em) {
+  #right-column {
+    width: 32.20339%;
+    float: right;
+    margin-right: 0;
+  }
 }
 #right-column div {
   margin-bottom: 20px;
@@ -982,7 +1003,7 @@ footer {
   left: 0;
 }
 .rank-list .rank-item .item-group > li.description {
-  width: 60%;
+  width: 50%;
   padding-left: 1em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1003,6 +1024,14 @@ footer {
 }
 .rank-list .rank-item .item-group > li.description .artist a {
   color: #666;
+}
+.rank-list .rank-item .item-group > li.increasing, .rank-list .rank-item .item-group > li.count {
+  display: none;
+}
+@media (min-width: 550px) {
+  .rank-list .rank-item .item-group > li.increasing, .rank-list .rank-item .item-group > li.count {
+    display: block;
+  }
 }
 .rank-list .rank-item .item-group > li.increasing {
   font-size: 30px;

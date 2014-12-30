@@ -1,10 +1,9 @@
 
 <div id="home" class="container">
   <div class="carousel">
-    <slick dots="true" autoplay="true" speed="3000">
-      <div ng-repeat="i in [0, 1, 2, 3 , 4]" class="slide">
-        <h3>{{$index}}</h3>
-      </div>
+    <slick dots="true" autoplay="true" speed="2000" autoplay-speed="5000">
+      <div class="slide"><a ui-sref="pop.home"><img src="images/banner_1.png"/></a></div>
+      <div class="slide"><a ui-sref="country.home"><img src="images/banner_2.png"/></a></div>
     </slick>
   </div>
   <div id="left-column">
