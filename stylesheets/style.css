@@ -831,22 +831,28 @@ footer {
 .carousel {
   background: lightblue;
   width: 100%;
-  height: 350px;
   margin: 0 auto;
   margin-bottom: 50px;
 }
 .carousel slick {
   width: 80%;
-  height: 300px;
+  height: 100%;
   margin: 0 auto;
 }
 .carousel slick .slide {
   text-align: center;
-  height: 300px;
+  height: 100%;
 }
 .carousel slick .slide img {
   margin: 0 auto;
-  height: 100%;
+  max-height: 100%;
+  width: 100%;
+}
+.carousel slick .slick-dots {
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3));
+  margin-bottom: 0;
+  height: 34px;
+  bottom: 0;
 }
 
 #left-column {
