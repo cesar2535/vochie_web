@@ -8,42 +8,49 @@
       .entry
         background-color: $blue
         border-radius: 10px
-        border: 1px solid darken($blue, 20%)
         color: $white
-        position: absolute
+        text-decoration: none
         width: 200px
         height: 50px
+        position: absolute
         overflow: auto
         margin: 20% auto 0 auto
         top: 0
         left: 0
         bottom: 0
         right: 0
+        &:hover
+          background-color: lighten($blue, 20%)
       .intro
         width: 100%
         +susy-breakpoint($width-medium, 12)
           width: auto
 
 #app-pop
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/app_pop.jpg)
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/app_pop.jpg) no-repeat
   .intro-block
     color: $white
   .entry
     background-color: $pop-pink
+    &:hover
+      background-color: lighten($pop-pink, 20%)
 
 #app-country
-  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(../images/app_country.jpg)
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(../images/app_country.jpg) no-repeat
   .intro-block
     color: #000
   .entry
     background-color: $country-brown
+    &:hover
+      background-color: lighten($country-brown, 20%)
 
 .next-stars
   height: 400px
   text-align: center
 
 #app-pop, #app-country
-  background-size: 100%
+  background-size: cover
+  background-position: center
   .container
     padding-top: 50px
     padding-bottom: 50px
@@ -94,9 +101,11 @@
         border-radius: 5px
         width: 100%
         font-size: 1.5em
+        +transition-duration(0.3s)
         a
           color: $white
           display: block
+          text-decoration: none
 
 /* Pop and Country */
 .carousel
