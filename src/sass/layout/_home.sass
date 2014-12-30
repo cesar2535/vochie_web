@@ -32,6 +32,8 @@
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))
   .intro-block
     color: $white
+  .cover
+    color: $white
   .entry
     background-color: $pop-pink
     &:hover
@@ -42,6 +44,8 @@
   .container
     background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6))
   .intro-block
+    color: #000
+  .cover
     color: #000
   .entry
     background-color: $country-brown
@@ -95,16 +99,24 @@
 
     .intro-cover
       +span(12)
-      text-align: center
       padding: 10px 0
       +susy-breakpoint($width-medium, 12)
         +span(last 4)
       .cover
         padding: 10px
+        display: flex
+        justify-content: center
+        img
+          width: 170px
+          height: 170px
+        .description
+          width: 50%
+          padding: 0 20px
       .entry
         border-radius: 5px
-        width: 100%
         font-size: 1.5em
+        text-align: center
+        margin: 10px
         +transition-duration(0.3s)
         a
           color: $white

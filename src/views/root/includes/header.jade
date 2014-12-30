@@ -15,15 +15,10 @@ header.navbar.navbar-default
         li
           a(ui-sref='root.blog', ng-class="{ active: location == 'blog' }") 
             | Blog
-        li.dropdown
-          a.dropdown-toggle(data-toggle="dropdown")
-            | Apps
-            strong.caret
-          ul.dropdown-menu(role='menu')
-            li
-              a(ui-sref='pop') Pop
-            li
-              a(ui-sref='country') Country
+        li
+          a(ui-sref='pop') Pop
+        li
+          a(ui-sref='country') Country
         li.dropdown(ng-hide="user._id")
           a.dropdown-toggle(data-toggle='dropdown')
             | Login
