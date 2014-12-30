@@ -703,38 +703,84 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+@media (min-width: 62em) {
+  #app-pop .container, #app-country .container {
+    flex-direction: row;
+  }
 }
 #app-pop .container .app-icon, #app-country .container .app-icon {
-  width: 23.72881%;
+  width: 100%;
   float: left;
-  margin-right: 1.69492%;
+  margin-left: 0;
+  margin-right: 0;
   text-align: center;
 }
+@media (min-width: 62em) {
+  #app-pop .container .app-icon, #app-country .container .app-icon {
+    width: 23.72881%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+}
 #app-pop .container .intro-block, #app-country .container .intro-block {
-  width: 40.67797%;
+  width: 100%;
   float: left;
-  margin-right: 1.69492%;
+  margin-left: 0;
+  margin-right: 0;
   padding: 0 10px;
+}
+@media (min-width: 62em) {
+  #app-pop .container .intro-block, #app-country .container .intro-block {
+    width: 40.67797%;
+    float: left;
+    margin-right: 1.69492%;
+  }
 }
 #app-pop .container .intro-block .download, #app-country .container .intro-block .download {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+@media (min-width: 62em) {
+  #app-pop .container .intro-block .download, #app-country .container .intro-block .download {
+    flex-direction: row;
+  }
 }
 #app-pop .container .intro-block .download div, #app-country .container .intro-block .download div {
   width: 49.15254%;
   float: right;
   margin-right: 0;
   text-align: center;
+  padding: 10px 0;
+}
+#app-pop .container .intro-block .download a, #app-country .container .intro-block .download a {
+  display: block;
 }
 #app-pop .container .intro-block .download img, #app-country .container .intro-block .download img {
-  height: 55px;
+  width: 100%;
+}
+@media (min-width: 62em) {
+  #app-pop .container .intro-block .download img, #app-country .container .intro-block .download img {
+    height: 55px;
+  }
 }
 #app-pop .container .intro-cover, #app-country .container .intro-cover {
-  width: 32.20339%;
-  float: right;
+  width: 100%;
+  float: left;
+  margin-left: 0;
   margin-right: 0;
   text-align: center;
+  padding: 10px 0;
+}
+@media (min-width: 62em) {
+  #app-pop .container .intro-cover, #app-country .container .intro-cover {
+    width: 32.20339%;
+    float: right;
+    margin-right: 0;
+  }
 }
 #app-pop .container .intro-cover .cover, #app-country .container .intro-cover .cover {
   padding: 10px;
