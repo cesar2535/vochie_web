@@ -1,4 +1,5 @@
 /* Compass */
+/* Breakpoint */
 /* Susy */
 /* Tools */
 /* ===========================
@@ -619,6 +620,9 @@ header .container-fluid .navbar-nav > li > a.active {
 header .container-fluid .navbar-nav > li > a:hover {
   color: #f1f1f1;
 }
+header .navbar-header .navbar-toggle .icon-bar {
+  background-color: #f1f1f1;
+}
 
 #pop-header .container-fluid {
   background-color: #ff0066;
@@ -633,6 +637,119 @@ footer {
   height: 300px;
 }
 
+/* Root home */
+.voci .container {
+  text-align: center;
+}
+.voci .container .intro-block {
+  position: relative;
+  font-size: 2em;
+}
+.voci .container .intro-block .entry {
+  background-color: #49aec0;
+  border-radius: 10px;
+  border: 1px solid #2a6d79;
+  color: #f1f1f1;
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  overflow: auto;
+  margin: 20% auto 0 auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.voci .container .intro-block .intro {
+  width: 100%;
+}
+@media (min-width: 62em) {
+  .voci .container .intro-block .intro {
+    width: auto;
+  }
+}
+
+#app-pop {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/app_pop.jpg);
+}
+#app-pop .intro-block {
+  color: #f1f1f1;
+}
+#app-pop .entry {
+  background-color: #ff0066;
+}
+
+#app-country {
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(../images/app_country.jpg);
+}
+#app-country .intro-block {
+  color: #000;
+}
+#app-country .entry {
+  background-color: #3a1f09;
+}
+
+.next-stars {
+  height: 400px;
+  text-align: center;
+}
+
+#app-pop, #app-country {
+  background-size: 100%;
+}
+#app-pop .container, #app-country .container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#app-pop .container .app-icon, #app-country .container .app-icon {
+  width: 23.72881%;
+  float: left;
+  margin-right: 1.69492%;
+  text-align: center;
+}
+#app-pop .container .intro-block, #app-country .container .intro-block {
+  width: 40.67797%;
+  float: left;
+  margin-right: 1.69492%;
+  padding: 0 10px;
+}
+#app-pop .container .intro-block .download, #app-country .container .intro-block .download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#app-pop .container .intro-block .download div, #app-country .container .intro-block .download div {
+  width: 49.15254%;
+  float: right;
+  margin-right: 0;
+  text-align: center;
+}
+#app-pop .container .intro-block .download img, #app-country .container .intro-block .download img {
+  height: 55px;
+}
+#app-pop .container .intro-cover, #app-country .container .intro-cover {
+  width: 32.20339%;
+  float: right;
+  margin-right: 0;
+  text-align: center;
+}
+#app-pop .container .intro-cover .cover, #app-country .container .intro-cover .cover {
+  padding: 10px;
+}
+#app-pop .container .intro-cover .entry, #app-country .container .intro-cover .entry {
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1.5em;
+}
+#app-pop .container .intro-cover .entry a, #app-country .container .intro-cover .entry a {
+  color: #f1f1f1;
+  display: block;
+}
+
+/* Pop and Country */
 .carousel {
   background: lightblue;
   width: 100%;
