@@ -70,7 +70,7 @@ gulp.task('compass', function() {
     sourcemap: true,
     css: 'build/stylesheets',
     sass: 'src/sass',
-    require: ['susy']
+    require: ['breakpoint', 'susy']
   }))
   .on('error', function (err) {
     gutil.log(gutil.colors.yellow(err.message));
