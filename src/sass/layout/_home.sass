@@ -50,25 +50,43 @@
     display: flex
     align-items: center
     justify-content: center
+    flex-direction: column
+    +susy-breakpoint($width-medium, 12)
+      flex-direction: row
     .app-icon
-      +span(3)
+      +span(12)
       text-align: center
+      +susy-breakpoint($width-medium, 12)
+        +span(3)
     .intro-block
-      +span(5)
+      +span(12)
       padding: 0 10px
+      +susy-breakpoint($width-medium, 12)
+        +span(5)
       .download
         display: flex
         align-items: center
         justify-content: center
+        flex-direction: column
+        +susy-breakpoint($width-medium, 12)
+          flex-direction: row
         div
           +span(last 6)
           text-align: center
+          padding: 10px 0
+        a
+          display: block
         img
-          height: 55px
+          width: 100%
+          +susy-breakpoint($width-medium, 12)
+            height: 55px
 
     .intro-cover
-      +span(last 4)
+      +span(12)
       text-align: center
+      padding: 10px 0
+      +susy-breakpoint($width-medium, 12)
+        +span(last 4)
       .cover
         padding: 10px
       .entry
