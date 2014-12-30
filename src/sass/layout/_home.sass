@@ -126,9 +126,13 @@
       text-align: center
 
 #left-column
-  +span(8)
+  +span(12)
+  +susy-breakpoint($width-medium, 12)
+    +span(8)
 #right-column
-  +span(last 4)
+  +span(12)
+  +susy-breakpoint($width-medium, 12)
+    +span(last 4)
   div
     margin-bottom: 20px
   .visit

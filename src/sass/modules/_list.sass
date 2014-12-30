@@ -37,7 +37,7 @@
           top: 0
           left: 0
       &.description
-        width: 60%
+        width: 50%
         padding-left: 1em
         +box-sizing(border-box)
         .title, .artist
@@ -52,7 +52,10 @@
           font-size: 18px
         .artist a
           color: #666
-
+      &.increasing, &.count
+        display: none
+        +susy-breakpoint(550px, 12)
+          display: block
       &.increasing
         font-size: 30px
         margin-top: 5px
