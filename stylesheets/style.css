@@ -683,7 +683,10 @@ footer {
 }
 
 #app-pop {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/app_pop.jpg) no-repeat;
+  background: url(../images/app_pop.jpg) no-repeat;
+}
+#app-pop .container {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 #app-pop .intro-block {
   color: #f1f1f1;
@@ -696,7 +699,10 @@ footer {
 }
 
 #app-country {
-  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(../images/app_country.jpg) no-repeat;
+  background: url(../images/app_country.jpg) no-repeat;
+}
+#app-country .container {
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
 }
 #app-country .intro-block {
   color: #000;
