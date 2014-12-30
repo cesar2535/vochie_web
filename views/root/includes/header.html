@@ -10,12 +10,8 @@
         <li><a ui-sref="root.blog" ng-class="{ active: location == 'blog' }">
              
             Blog</a></li>
-        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">Apps<strong class="caret"></strong></a>
-          <ul role="menu" class="dropdown-menu">
-            <li><a ui-sref="pop">Pop</a></li>
-            <li><a ui-sref="country">Country</a></li>
-          </ul>
-        </li>
+        <li><a ui-sref="pop">Pop</a></li>
+        <li><a ui-sref="country">Country</a></li>
         <li ng-hide="user._id" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">Login<strong class="caret"></strong></a>
           <ul role="menu" class="dropdown-menu">
             <li><a ng-click="login.withFacebook('pop')">Login with Facebook</a></li>
