@@ -1,3 +1,85 @@
+/* Root home */
+.voci
+  .container
+    text-align: center
+    .intro-block
+      position: relative
+      font-size: 2em
+      .entry
+        background-color: $blue
+        border-radius: 10px
+        border: 1px solid darken($blue, 20%)
+        color: $white
+        position: absolute
+        width: 200px
+        height: 50px
+        overflow: auto
+        margin: 20% auto 0 auto
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+      .intro
+        width: 100%
+        +susy-breakpoint($width-medium, 12)
+          width: auto
+
+#app-pop
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/app_pop.jpg)
+  .intro-block
+    color: $white
+  .entry
+    background-color: $pop-pink
+
+#app-country
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(../images/app_country.jpg)
+  .intro-block
+    color: #000
+  .entry
+    background-color: $country-brown
+
+.next-stars
+  height: 400px
+  text-align: center
+
+#app-pop, #app-country
+  background-size: 100%
+  .container
+    padding-top: 50px
+    padding-bottom: 50px
+    display: flex
+    align-items: center
+    justify-content: center
+    .app-icon
+      +span(3)
+      text-align: center
+    .intro-block
+      +span(5)
+      padding: 0 10px
+      .download
+        display: flex
+        align-items: center
+        justify-content: center
+        div
+          +span(last 6)
+          text-align: center
+        img
+          height: 55px
+
+    .intro-cover
+      +span(last 4)
+      text-align: center
+      .cover
+        padding: 10px
+      .entry
+        border-radius: 5px
+        width: 100%
+        font-size: 1.5em
+        a
+          color: $white
+          display: block
+
+/* Pop and Country */
 .carousel
   background: lightblue
   width: 100%

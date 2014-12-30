@@ -1,2 +1,59 @@
-#home.container
-  h1 Root Home
+#home
+  .voci
+    .container
+      h1 Welcome to Vōchie!
+      p
+        b It's Pandora For Singers!
+        br
+        | Vōchie gives you control over the power of interactive music. You choose the genre, artsits, and songs from thousands of available hit tracks: all killer, no filler! Completely ad supported and 100% FREE! No charge to download and no monthly subscription fee. Never "pay to play!"
+      .intro-block
+        a.entry(href='/home#app-pop') Start Explore
+        img.intro(src='images/intro.png')
+  #app-pop
+    .container
+      .app-icon
+        img(src='images/launcher-pop.png')
+      .intro-block
+        .wording
+          h1 Vōchie-Pop
+          br
+          p Vōchie gives you control over the power of interactive music. You choose the genre, artsits, and songs from thousands of available hit tracks: all killer, no filler! Completely ad supported and 100% FREE! No charge to download and no monthly subscription fee. Never "pay to play"
+          br
+        .download
+          .google-play
+            a(href="https://play.google.com/store/apps/details?id=com.deansoft.singnshare", target='_blank')
+              img(src='images/btn_android.png')
+          .app-store
+            a(href="https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&mt=8", target='_blank')
+              img(src='images/btn_appStore.png')
+      .intro-cover
+        .cover
+          img(src='images/cover.jpg')
+        .entry
+          a(ui-sref="pop.home") Learn More
+  #app-country
+    .container
+      .app-icon
+        img(src='images/launcher-country.png')
+      .intro-block
+        .wording
+          h1 Vōchie-Country
+          br
+          p Vōchie gives you control over the power of interactive music. You choose the genre, artsits, and songs from thousands of available hit tracks: all killer, no filler! Completely ad supported and 100% FREE! No charge to download and no monthly subscription fee. Never "pay to play"
+          br
+        .download
+          .google-play
+            a(href="https://play.google.com/store/apps/details?id=com.deansoft.singnshare", target='_blank')
+              img(src='images/btn_android.png')
+          .app-store
+            a(href="https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&mt=8", target='_blank')
+              img(src='images/btn_appStore.png')
+      .intro-cover
+        .cover
+          img(src='images/cover.jpg')
+        .entry
+          a(ui-sref="country.home") Learn More
+  .next-stars
+    .container
+      h1 BE THE NEXT STAR!
+      h2 Check Our Music Truck and Go For It!
