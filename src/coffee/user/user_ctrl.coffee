@@ -13,6 +13,10 @@ myApp.controller 'UserCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state'
         $scope.userProfile = successRes.data
         $scope.userProfile._id = $stateParams.id
         console.log $scope.userProfile
+    else
+      $scope.userProfile._id = $rootScope.user._id
+      $scope.userProfile.username = $rootScope.user.name
+      console.log $scope.userProfile
 
   UserFctry.checkUserLogin()
   .then (successRes) ->

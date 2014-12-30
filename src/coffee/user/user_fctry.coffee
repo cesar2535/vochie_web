@@ -3,7 +3,7 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
   console.log 'UserFctry'
   checkUserLogin: ->
     user = $cookieStore.get 'currentUser'
-    if user is undefined
+    if !user
       console.error 'No login user'
       return
     this.getUserData undefined, user.accessToken
