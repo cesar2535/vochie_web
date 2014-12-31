@@ -1,0 +1,78 @@
+
+<div id="cover" class="container">
+  <div id="left-column">
+    <div class="cover-info">
+      <div class="cover">
+        <div hide-lazy="" class="image"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo.userId}}_medium.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo._id}}_medium.png" class="lazy"/></div>
+      </div>
+      <div class="description">
+        <h2>{{coverInfo.title}}</h2>
+        <h4><a ui-sref="root.user({ id: coverInfo.userId })">{{coverInfo.username}}</a></h4><span>{{coverInfo.createdAt}}</span>
+        <div class="interaction">
+          <div class="playback count"><i class="fa fa-play"></i><br/><span>{{coverInfo.playCount}}</span></div>
+          <div class="like count"><i class="icon-like"></i><br/><span>{{coverInfo.likes}}</span></div>
+          <div class="pin count"><i class="icon-pushpin"></i><br/><span>{{coverInfo.pinCount}}</span></div>
+          <div class="comment count"><i class="icon-comment"></i><br/><span>{{coverInfo.commentCount}}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="comment-block">
+      <div class="comment-edit"></div>
+      <div class="comments">
+        <div class="comment"></div>
+      </div>
+    </div>
+  </div>
+  <div id="right-column">
+    <div class="product">
+      <h4>
+         
+        Recorded by <i>Vōchie {{product.name.toUpperCase()}}</i>
+      </h4><span>>> Free Install Now!</span>
+      <div class="download"><a href="{{product.googlePlay}}" target="_blank" class="google-play"><img src="images/btn_android.png"/></a><a href="product.appStore" target="_blank" class="app-store"><img src="images/btn_appStore.png"/></a></div>
+    </div>
+    <div class="recommend">
+      <div class="main-title">Relative</div>
+      <ul class="rank-list">
+        <li ng-repeat="item in recommend.list" class="rank-item">
+          <ul class="item-group">
+            <li hide-lazy="" class="cover"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png" class="lazy"/></li>
+            <li class="description">
+              <ul>
+                <li class="title"><a ui-sref="{{coverLink}}({id: item.coverId})">{{item.title}}</a></li>
+                <li class="artist"><a ui-sref="root.user.rec({id: item.userId})">{{item.username}}</a></li>
+              </ul>
+            </li>
+            <li class="playback count"><i class="fa fa-play"></i><br/>{{item.playCount}}</li>
+            <li class="like count"><i class="icon-like"></i><br/>{{item.likes}}</li>
+          </ul>
+        </li>
+        <li ng-hide="recommend.fullList.length == 0" class="more-covers">
+          <button ng-click="recommend.moreCovers()"><i class="icon-arrow-down"></i></button>
+        </li>
+      </ul>
+    </div>
+    <div class="ad-wrapper"></div>
+    <div class="most-like">
+      <div class="main-title">Most Like</div>
+      <ul class="rank-list">
+        <li ng-repeat="item in mostLike.list" class="rank-item">
+          <ul class="item-group">
+            <li hide-lazy="" class="cover"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png" class="lazy"/></li>
+            <li class="description">
+              <ul>
+                <li class="title"><a ui-sref="{{coverLink}}({id: item.coverId})">{{item.title}}</a></li>
+                <li class="artist"><a ui-sref="root.user.rec({id: item.userId})">{{item.username}}</a></li>
+              </ul>
+            </li>
+            <li class="playback count"><i class="fa fa-play"></i><br/>{{item.playCount}}</li>
+            <li class="like count"><i class="icon-like"></i><br/>{{item.likes}}</li>
+          </ul>
+        </li>
+        <li ng-hide="mostLike.fullList.length == 0" class="more-covers">
+          <button ng-click="mostLike.moreCovers()"><i class="icon-arrow-down"></i></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

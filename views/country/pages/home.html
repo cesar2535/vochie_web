@@ -2,14 +2,20 @@
 <div id="home" class="container">
   <div class="carousel">
     <slick style="width: 80%; margin: 0 auto" dots="true" autoplay="true" speed="3000">
-      <div ng-repeat="i in [0, 1, 2, 3 , 4]" style="text-align: center">
-        <h3>{{$index}}</h3>
-      </div>
+      <div class="slide"><a ui-sref="pop.home"><img src="images/banner_1.png"/></a></div>
+      <div class="slide"><a ui-sref="country.home"><img src="images/banner_2.png"/></a></div>
     </slick>
   </div>
   <div id="left-column">
     <hot-rank></hot-rank>
     <new-rank></new-rank>
   </div>
-  <div id="right-column"></div>
+  <div id="right-column">
+    <div class="visit"><a ui-sref="pop.home">Visit Vōchie Pop</a></div>
+    <div class="twitter-box"><span>Twitter</span></div>
+    <div class="advertising-box"><span>
+         
+        Want to Brand your business HERE?<br/><br/>Call Us 123 00 123</span></div>
+    <div class="facebook-box"><span>Facebook</span></div>
+  </div>
 </div>

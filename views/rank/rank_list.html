@@ -13,8 +13,8 @@
         <li hide-lazy="" class="cover"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png" class="lazy"/></li>
         <li class="description">
           <ul>
-            <li class="title"><a ui-sref="root.cover({id: item.coverId})">{{item.title}}</a></li>
-            <li class="artist"><a ui-sref="root.user.rec({id: item.userId})">{{item.artist}}</a></li>
+            <li class="title"><a ui-sref="{{coverLink}}({id: item.coverId})">{{item.title}}</a></li>
+            <li class="artist"><a ui-sref="root.user.rec({id: item.userId})">{{item.username}}</a></li>
           </ul>
         </li>
         <li class="count"><a ng-click="playback($index,lists)" class="play"><i class="icon-play"></i></a><span class="play-count">{{item.playCount}}</span></li>
