@@ -60,8 +60,8 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: 'blog'
       templateUrl: 'views/root/pages/blog.html'
       controller: ''
-    .state 'search',
-      url: '/search/:keyword'
+    .state 'root.search',
+      url: 'search/:keyword'
       templateUrl: ''
       controller: ''
     .state 'root.user',

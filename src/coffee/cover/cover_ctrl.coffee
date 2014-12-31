@@ -64,7 +64,7 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
         $scope.coverInfo.pinCount = successRes.data.pins.length
         $scope.coverInfo.playCount = successRes.data.play_count
         $scope.coverInfo.setImage()
-      $rootScope.title += " - #{$scope.coverInfo.title}"
+      $rootScope.title = "Vōchie Pop - #{$scope.coverInfo.title} by #{$scope.coverInfo.username}"
       console.log $scope.coverInfo
 
   initailizeRecommends = (coverId, product) ->
