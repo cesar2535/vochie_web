@@ -1,0 +1,19 @@
+#cover.container
+  #left-column
+    .cover-info
+      .image
+        img.lazy(alt="Cover image", data-src="{{coverInfo.userImage}}")
+        img.lazy(alt="Cover image", data-src="{{coverInfo.coverImage}}")
+      .description
+        h2 {{coverInfo.title}}
+        h4
+          a(ui-sref="root.user({ id: coverInfo.userId })") {{coverInfo.username}}
+        span {{coverInfo.createdAt}}
+        .interaction
+    .comment-block
+      .comment-edit
+
+      .comments
+        .comment
+
+  #right-column

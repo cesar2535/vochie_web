@@ -1,7 +1,7 @@
 myApp.factory 'CoverFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig'
 ($rootScope, $http, $timeout, $q, apiConfig) ->
   canceler = undefined
-  getCover: (coverId, cache, product) ->
+  getCover: (coverId, product) ->
     apiKey = apiConfig.productCheck product
     if canceler
       canceler.resolve()

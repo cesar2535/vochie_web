@@ -60,10 +60,6 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: 'blog'
       templateUrl: 'views/root/pages/blog.html'
       controller: ''
-    .state 'root.cover',   # confusion
-      url: 'cover/:id'
-      templateUrl: 'views/cover/cover.html'
-      controller: ''
     .state 'search',
       url: '/search/:keyword'
       templateUrl: ''
@@ -108,6 +104,10 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/explore'
       templateUrl: 'views/songbook/songbook.html'
       controller: 'ExploreCtrl'
+    .state 'pop.cover',
+      url:'/cover/:id'
+      templateUrl: 'views/cover/cover.html'
+      controller: 'CoverCtrl'
     .state 'country',
       url: '/country'
       templateUrl: 'views/country/pages/layout.html'
@@ -120,6 +120,10 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       url: '/explore'
       templateUrl: 'views/songbook/songbook.html'
       controller: 'ExploreCtrl'
+    .state 'country.cover',
+      url: '/cover/:id'
+      templateUrl: 'views/cover/cover.html'
+      controller: 'CoverCtrl'
 ]
 
 myApp.directive 'lazy', ['$timeout', ($timeout) ->
@@ -127,7 +131,7 @@ myApp.directive 'lazy', ['$timeout', ($timeout) ->
   link: (scope, element) ->
     $timeout ->
       $(element).lazyLoadXT({edgeY: '200'})
-    , 0
+    , 1000
 ]
 
 myApp.directive 'hideLazy', ['$timeout', ($timeout) ->

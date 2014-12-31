@@ -5,11 +5,13 @@ myApp.controller 'HotCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
       name: 'pop'
       app: apiConfig.popApp
       secret: apiConfig.popKey
+    $scope.coverLink = 'pop.cover'
   else if $state.current.name is 'country.home'
     $rootScope.product =
       name: 'country'
       app: apiConfig.countryApp
       secret: apiConfig.countryKey
+    $scope.coverLink = 'country.cover'
 
   $scope.rank = 
     title: 'HOT COVERS'
