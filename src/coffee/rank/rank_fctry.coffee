@@ -6,6 +6,7 @@ myApp.factory 'RankFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig'
       method: 'get'
       cache: true
     .then (successRes) ->
+      console.info "----- Get Play Count Rank -----"
       if successRes.status is 200
         return successRes.data
   getLikeRank: (type) ->
@@ -14,6 +15,7 @@ myApp.factory 'RankFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig'
       method: 'get'
       cache: true
     .then (successRes) ->
+      console.info "----- Get Like Rank -----"
       if successRes.status is 200
         return successRes.data
   getPinRank: (type) ->
@@ -38,6 +40,7 @@ myApp.factory 'RankFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConfig'
       method: 'get'
       cache: true
     .then (successRes) ->
+      console.info "----- Get New Star Rank -----"
       if successRes.status is 200
         return successRes.data
   getNewCovers: ->

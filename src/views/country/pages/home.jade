@@ -1,9 +1,25 @@
 #home.container
   .carousel
     slick(style="width: 80%; margin: 0 auto", dots="true", autoplay="true", speed="3000")
-      div(ng-repeat='i in [0, 1, 2, 3 , 4]', style="text-align: center")
-        h3 {{$index}}
+      div.slide
+        a(ui-sref='pop.home')
+          img(src='images/banner_1.png')
+      div.slide
+        a(ui-sref='country.home')
+          img(src='images/banner_2.png')
   #left-column
     hot-rank
     new-rank
   #right-column
+    .visit
+      a(ui-sref='pop.home') Visit Vōchie Pop
+    .twitter-box
+      span Twitter
+    .advertising-box
+      span 
+        | Want to Brand your business HERE?
+        br
+        br
+        | Call Us 123 00 123
+    .facebook-box
+      span Facebook

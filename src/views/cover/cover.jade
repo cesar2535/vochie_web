@@ -1,15 +1,32 @@
 #cover.container
   #left-column
     .cover-info
-      .image
-        img.lazy(alt="Cover image", data-src="{{coverInfo.userImage}}")
-        img.lazy(alt="Cover image", data-src="{{coverInfo.coverImage}}")
+      .cover
+        .image(hide-lazy='')
+          img.lazy(alt="Cover image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo.userId}}_medium.png")
+          img.lazy(alt="Cover image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo._id}}_medium.png")
       .description
         h2 {{coverInfo.title}}
         h4
           a(ui-sref="root.user({ id: coverInfo.userId })") {{coverInfo.username}}
         span {{coverInfo.createdAt}}
         .interaction
+          .playback.count
+            i.fa.fa-play
+            br
+            span {{coverInfo.playCount}}
+          .like.count
+            i.icon-like
+            br
+            span {{coverInfo.likes}}
+          .pin.count
+            i.icon-pushpin
+            br
+            span {{coverInfo.pinCount}}
+          .comment.count
+            i.icon-comment
+            br
+            span {{coverInfo.commentCount}}
     .comment-block
       .comment-edit
 
@@ -17,3 +34,66 @@
         .comment
 
   #right-column
+    .product
+      h4 
+        | Recorded by 
+        i Vōchie {{product.name.toUpperCase()}}
+      span >> Free Install Now!
+      .download
+        a.google-play(href="{{product.googlePlay}}", target='_blank')
+          img(src='images/btn_android.png')
+        a.app-store(href="product.appStore", target='_blank')
+          img(src='images/btn_appStore.png')
+    .recommend
+      .main-title
+        | Relative
+      ul.rank-list
+        li.rank-item(ng-repeat="item in recommend.list")
+          ul.item-group
+            li.cover(hide-lazy='')
+              img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png')
+              img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png')
+            li.description
+              ul
+                li.title
+                  a(ui-sref='{{coverLink}}({id: item.coverId})') {{item.title}}
+                li.artist
+                  a(ui-sref='root.user.rec({id: item.userId})') {{item.username}}
+            li.playback.count
+              i.fa.fa-play
+              br
+              | {{item.playCount}}
+            li.like.count
+              i.icon-like
+              br
+              | {{item.likes}}
+        li.more-covers(ng-hide="recommend.fullList.length == 0")
+          button(ng-click="recommend.moreCovers()")
+            i.icon-arrow-down
+    .ad-wrapper
+    .most-like
+      .main-title
+        | Most Like
+      ul.rank-list
+        li.rank-item(ng-repeat="item in mostLike.list")
+          ul.item-group
+            li.cover(hide-lazy='')
+              img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png')
+              img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png')
+            li.description
+              ul
+                li.title
+                  a(ui-sref='{{coverLink}}({id: item.coverId})') {{item.title}}
+                li.artist
+                  a(ui-sref='root.user.rec({id: item.userId})') {{item.username}}
+            li.playback.count
+              i.fa.fa-play
+              br
+              | {{item.playCount}}
+            li.like.count
+              i.icon-like
+              br
+              | {{item.likes}}
+        li.more-covers(ng-hide="mostLike.fullList.length == 0")
+          button(ng-click="mostLike.moreCovers()")
+            i.icon-arrow-down

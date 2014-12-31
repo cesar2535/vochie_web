@@ -28,8 +28,9 @@ myApp.controller 'HotCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
         list.push
           coverId: item.id
           userId: item.song.user_id
+          username: item.song.user_name
           title: item.song.song.Title
-          artist: item.song.user_name
+          artist: item.song.song.ArtistName
           m4a: item.song.path
           playCount: item.count
           likes: item.song.likes.total

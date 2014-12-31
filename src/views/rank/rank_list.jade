@@ -19,7 +19,7 @@
             li.title
               a(ui-sref='{{coverLink}}({id: item.coverId})') {{item.title}}
             li.artist
-              a(ui-sref='root.user.rec({id: item.userId})') {{item.artist}}
+              a(ui-sref='root.user.rec({id: item.userId})') {{item.username}}
         li.count
           a.play(ng-click='playback($index,lists)')
             i.icon-play

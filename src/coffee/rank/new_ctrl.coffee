@@ -29,8 +29,9 @@ myApp.controller 'NewCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
             list.push 
               coverId: cover._id
               userId: cover.user_id
+              username: cover.user_name
               title: cover.song.Title
-              artist: cover.user_name
+              artist: cover.song.ArtistName
               m4a: cover.path
               playCount: cover.play_count
               likes: cover.likes
