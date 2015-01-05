@@ -32,6 +32,7 @@ myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$stat
           if successUserRes.status is 'success'
             $rootScope.user._id = successUserRes.data._id
             $rootScope.user.name = successUserRes.data.username
+            $rootScope.user.profile = successUserRes.data
           console.log $rootScope.user
           $cookieStore.put 'currentUser', $rootScope.user
 
@@ -45,6 +46,7 @@ myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$stat
           if successRes.status is 'success'
             $rootScope.user._id = successRes.data._id
             $rootScope.user.name = successRes.data.username
+            $rootScope.user.profile = successUserRes.data
           console.log $rootScope.user
           $cookieStore.put 'currentUser', $rootScope.user
 

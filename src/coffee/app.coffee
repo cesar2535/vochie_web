@@ -139,3 +139,10 @@ myApp.directive 'hideLazy', ['$timeout', ($timeout) ->
     $(element).children('img').error ->
       $(this).hide()
 ]
+
+myApp.directive 'ngEnter', ->
+  (scope, element, attrs) ->
+    element.on 'keypress', (e) ->
+      if e.keyCode is 13
+        scope.$apply attrs.ngEnter
+        e.preventDefault()

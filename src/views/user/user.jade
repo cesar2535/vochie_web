@@ -5,29 +5,43 @@
         img(alt='Avatar', ng-src='https://do4n1cuexrn6s.cloudfront.net/user/{{userProfile._id}}_medium.png')
     .description-block
       .username
-        h1 {{userProfile.username}}
-        .material-input(ng-show='isOwner')
-          input(name='edit username', ng-enter="")
+        h1(ng-hide="editMode.profile") {{userProfile.username}}
+        .material-input(ng-show='isOwner && editMode.profile')
+          input(type="text", name='edit username', ng-enter="editMode.profile=!editMode.profile; editFunc.setUsername(editMode.profile); editFunc.setDescription(editMode.profile)", ng-model="userProfile.username")
           span.highlight
           span.bar
           label Name
-      .follow-button(ng-if="!isOwner")
-        a.follow(ng-if='!isFollowing')
+      .follow-btn(ng-if="!isOwner")
+        a.follow(ng-show='!isFollowing && user._id', ng-click="follow()")
           i.icon-follow_0
           span Follow
-        a.unfollow(ng-if='isFollowing')
+        a.unfollow(ng-show='isFollowing && user._id', ng-click="unfollow()")
           i.icon-follow_1
           span Unfollow
+        a(ng-hide="user._id")
+          span Please login
+      br
       .description
-        h3 {{userProfile.profile || "Tell the Sing-N-Share community about yourself, your event, or anything you want to share!"}}
-        .material-input(ng-show='isOwner')
-          input(name='edit profile', ng-enter="")
+        h3(ng-hide="editMode.profile") {{userProfile.profile || "Tell the Sing-N-Share community about yourself, your event, or anything you want to share!"}}
+        .material-input(ng-show='isOwner && editMode.profile')
+          input(type="text", name='edit profile', ng-enter="editMode.profile=!editMode.profile; editFunc.setUsername(editMode.profile); editFunc.setDescription(editMode.profile)", ng-model='userProfile.profile')
           span.highlight
           span.bar
           label Description
-      .edit-button
-        button(ng-if='isOwner', title='Edit profile')
+      .edit-btn
+        button.edit.btn(ng-if='isOwner', ng-click="editMode.profile=!editMode.profile; editFunc.setUsername(editMode.profile); editFunc.setDescription(editMode.profile)", title='Edit profile')
           i.icon-edit
+        button.email.btn(ng-click='editMode.email=!editMode.email;', ng-if='isOwner || userProfile.email.length > 0')
+          i.icon-email
+        a(ng-if="userProfile.email.length > 0", href="mailTo:{{userProfile.email}}") {{userProfile.email}}
+        .edit-outer(ng-click='editMode.email=!editMode.email;', ng-if='editMode.email && isOwner')
+          .edit-wrapper(ng-click='$event.stopPropagation()')
+            form.email(ng-submit='editMode.email=!editMode.email;editFunc.setEmail(editMode.email)')
+              input.edit-input(name='edit email', ng-model='userProfile.email', ng-show='isOwner', type='email')
+              label.check.pull-left
+                input(name='public email', ng-change='editFunc.setEmailStatus(emailStatus)', ng-model='emailStatus', type='checkbox')
+                | Public
+              input#set-email.btn.pull-right(ng-disabled='!isOwner', type='submit', value='Submit')
   .tabs
     ul.nav.nav-pills.nav-justified
       li

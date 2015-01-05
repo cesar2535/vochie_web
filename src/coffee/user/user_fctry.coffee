@@ -8,12 +8,16 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
       return
     this.getUserData undefined, user.accessToken
     .then (successRes) ->
-      if successRes.msg is 'token error'
+      if successRes.msg is 'token error' or successRes.msg is 'not found user'
         console.error successRes.msg
         $rootScope.user = {}
         $cookieStore.put 'currentUser', {}
       else
-        $rootScope.user = user
+        $rootScope.user.accessToken = user.accessToken
+        $rootScope.user.provider = user.provider
+        $rootScope.user._id = successRes.data._id
+        $rootScope.user.name = successRes.data.username
+        $rootScope.user.profile = successRes.data
         return successRes
 
   getUserData: (userId, accessToken) ->
@@ -34,6 +38,54 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
       return successRes.data
     , (errorRes) ->
       console.error "Get User's Data"
+      console.error errorRes
+      return errorRes.data
+
+  setUserProfile: (field, value) ->
+    $http
+      url: apiConfig.rest_url '/user/set/' + field
+      params:
+        token: $rootScope.user.accessToken
+        value: value
+      method: 'get'
+    .then (successRes) ->
+      console.info "----- Set User's Profile -----"
+      console.log successRes
+      return successRes.data
+    , (errorRes) ->
+      console.error "Set User's Profile"
+      console.error errorRes
+      return errorRes.data
+
+  setFollow: (userId) ->
+    $http
+      url: apiConfig.rest_url '/user/follow/add'
+      params:
+        token: $rootScope.user.accessToken
+        followeduser_id: userId
+      method: 'get'
+    .then (successRes) ->
+      console.info "----- Set Follow -----"
+      console.log successRes
+      return successRes.data
+    , (errorRes) ->
+      console.error "Set Follow"
+      console.error errorRes
+      return errorRes.data
+
+  setUnfollow: (userId) ->
+    $http
+      url: apiConfig.rest_url '/user/follow/remove'
+      params:
+        token: $rootScope.user.accessToken
+        followeduser_id: userId
+      method: 'get'
+    .then (successRes) ->
+      console.info "----- Set Unfollow -----"
+      console.log successRes
+      return successRes.data
+    , (errorRes) ->
+      console.error "Set Follow"
       console.error errorRes
       return errorRes.data
 
