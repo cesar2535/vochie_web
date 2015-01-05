@@ -1,4 +1,4 @@
-#recording-list, #pins-list
+#recording-list, #pins-list, #follows-list, #followers-list
   .pop, .country
     margin-bottom: 2%
   .main-title
@@ -130,3 +130,9 @@
     .more
       border-top: 1px solid #000
       clear: both
+
+#follows-list, #followers-list
+  .list
+    .item
+      .image
+        +background-image(url(../images/avatar.png))

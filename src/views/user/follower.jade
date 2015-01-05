@@ -1,1 +1,16 @@
 #followers-list
+  .main-title
+    i.icon-pushpin
+    span Following
+    span.total(ng-hide='followList.followed.length==0 || followList.followed.length==null') / total: {{followList.followed.length}} 
+  .list
+    .item(ng-repeat="item in followList.followed")
+      .control
+      .image(hide-lazy='')
+        img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.id}}_medium.png")
+      ul.content
+        li.title
+          a(ui-sref='root.user.rec({id: item.id})') {{item.username}}
+    .empty(ng-if="!isOwner")
+      
+    .empty(ng-if="isOwner")

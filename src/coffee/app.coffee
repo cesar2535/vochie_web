@@ -79,11 +79,11 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
     .state 'root.user.follow',
       url: '/follow'
       templateUrl: 'views/user/follow.html'
-      controller: ''
+      controller: 'FollowCtrl'
     .state 'root.user.follower',
       url: '/follower'
       templateUrl: 'views/user/follower.html'
-      controller: ''
+      controller: 'FollowCtrl'
     .state 'pop',
       url: '/pop'
       templateUrl: 'views/pop/pages/layout.html'
