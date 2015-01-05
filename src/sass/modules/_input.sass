@@ -1,0 +1,80 @@
+.material-input
+  position: relative
+  margin-top: 25px
+  input
+    font-size: 18px
+    padding: 10px 10px 10px 5px
+    display: block
+    width: 235px
+    border: none
+    border-bottom: 1px solid $blue
+    border-radius: 0px
+    background: transparent
+    +susy-breakpoint($width-small, 12)
+      width: 300px
+    &:focus
+      outline: none
+    &:focus ~ label, &:valid ~ label
+      top: -20px
+      font-size: 14px
+      color: $blue
+    &:focus ~ .bar, &:valid ~ .bar
+      width: 50%
+    &:focus ~ .highlight
+      -webkit-animation: inputlighter 0.3s ease
+      -moz-animation: inputlighter 0.3s ease
+      animation: inputlighter 0.3s ease
+  label
+    color: #999
+    font-size: 18px
+    font-weight: normal
+    position: absolute
+    pointer-events: none
+    left: 5px
+    top: 10px
+    +transition(0.2s ease all)
+  .bar
+    position: relative
+    display: block
+    width: 300px
+    &:before, &:after
+      content: ''
+      height: 2px
+      width: 0
+      bottom: 1px
+      position: absolute
+      background: $blue
+      +transition(0.2s ease all)
+    &:before
+      left: 50%
+    &:after
+      right: 50%
+  .highlight
+    position: absolute
+    height: 60%
+    width: 100px
+    top: 25%
+    left: 0
+    pointer-events: none
+    opacity: 0.5
+
+@-webkit-keyframes inputlighter
+  from
+    background: $blue
+  to
+    width: 0
+    background: transparent
+
+@-moz-keyframes inputlighter
+  from
+    background: $blue
+  to
+    width: 0
+    background: transparent
+
+@keyframes inputlighter
+  from
+    background: $blue
+  to
+    width: 0
+    background: transparent

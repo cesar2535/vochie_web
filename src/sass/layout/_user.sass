@@ -1,0 +1,83 @@
+#user-profile
+  .info
+    margin-top: 5%
+    overflow: hidden
+    .picture-block
+      +span(12)
+      text-align: center
+      +susy-breakpoint($width-small, 12)
+        +span(2)
+      .picture
+        +background(url(../images/avatar.png))
+        +background-size(cover)
+        overflow: hidden
+        border-radius: 50%
+        width: 100px
+        height: 100px
+        display: inline-block
+
+      img
+        width: 100px
+        height: 100px
+        border-radius: 50%
+    .description-block
+      +span(12)
+      position: relative
+      text-align: center
+      +susy-breakpoint($width-small, 12)
+        +span(last 10)
+        text-align: start
+      .username
+        display: inline-block
+        h1
+          margin: 0
+          color: $blue
+      .follow-button
+        display: inline-block
+        margin-left: 50px
+        position: relative
+        a
+          color: $blue
+          i
+            margin-top: 5px
+            font-size: 24px
+            border-radius: 50%
+            background-color: white
+            position: absolute
+          span
+            margin-left: 12px
+            display: inline-block
+            background-color: white
+            border: 2px solid $blue
+            border-radius: 5px
+            padding: 5px 10px 5px 15px
+          &:hover
+            color: $orange
+            cursor: pointer
+            text-decoration: none
+            span
+              border: 2px solid $orange
+        .unfollow
+          color: $orange
+          span
+            border: 2px solid $orange
+          &:hover
+            color: $blue
+            span
+              border: 2px solid $blue
+
+      .description
+        h3
+          color: grey
+          font-size: 1.5em
+          word-break: break-word
+  .tabs
+    margin-top: 2%
+    ul > li > a
+      font-size: 25px
+      &.active
+        background-color: $orange
+        color: $white
+      &:hover
+        background-color: lighten($orange, 20%)
+        color: $white

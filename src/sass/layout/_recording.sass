@@ -1,0 +1,132 @@
+#recording-list, #pins-list
+  .pop, .country
+    margin-bottom: 2%
+  .main-title
+    @extend %main-title
+    font-size: 1em
+    +susy-breakpoint($width-small, 12)
+      font-size: 1.5em
+  .list
+    overflow: hidden
+    min-height: 300px
+    .item
+      background: #fff
+      margin-bottom: 10px
+      text-align: center
+      border-radius: 5px
+      +span(6)
+      &:nth-child(2n)
+        +span(last 6)
+      +susy-breakpoint($width-small, 12)
+        +span(3)
+        &:nth-child(2n)
+          +span(3)
+        &:nth-child(4n)
+          +span(last 3)
+      +susy-breakpoint($width-medium, 12)
+        +span(2)
+        &:nth-child(2n)
+          +span(2)
+        &:nth-child(4n)
+          +span(2)
+        &:nth-child(6n)
+          +span(last 2)
+      .control
+        height: 35px
+        line-height: 3em
+        text-align: right
+      .image
+        +background(url(../images/default.png))
+        +background-size(cover)
+        width: 100%
+        position: relative
+        padding-top: 100%
+        img
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+        .playback
+          position: absolute
+          top: 50%
+          left: 50%
+          width: 45px
+          height: 45px
+          border: 0
+          border-radius: 50%
+          background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))
+          margin-left: -20px
+          margin-top: -20px
+          color: #f1f1f1
+          font-size: 36px
+          i
+            vertical-align: text-top
+      .content, .interaction
+        padding-left: 0
+        margin: 0
+        min-height: 30px
+        overflow: hidden
+        text-overflow: ellipsis
+        padding: 10px 12px 0 12px
+        +box-sizing(border-box)
+        .title, .username
+          color: #333
+          width: 100%
+          height: 24px
+          overflow: hidden
+          text-overflow: ellipsis
+          white-space: nowrap
+          text-decoration: underline
+          +susy-breakpoint($width-medium, 12)
+            text-decoration: none
+          a
+            color: #333
+        .play-count, .thumbs-up
+          +inline-block()
+          +span(6)
+          span
+            margin-left: 5px
+        .thumbs-up
+          +span(last 6)
+    .empty
+      margin: 0 auto
+      text-align: center
+      margin-top: 2em
+      color: grey
+      &.rec
+        i
+          color: lighten(grey, 5%)
+        a
+          display: inline-block
+          width: 100%
+          +susy-breakpoint($width-medium, 12)
+            width: 50%
+          img
+            padding: 5px 0
+            width: 100%
+            +susy-breakpoint($width-small, 12)
+              width: 60%
+            +susy-breakpoint($width-medium, 12)
+              width: 100%
+            height: auto
+            +susy-breakpoint($width-medium, 12)
+              padding: 0 10px
+      .download-wrap
+        color: darken(grey, 5%)
+        width: 90%
+        margin: 3em auto
+        padding: 20px
+        border: 5px solid lighten(grey, 5%)
+        border-radius: 10px
+        +susy-breakpoint($width-small, 12)
+          width: 70%
+        +susy-breakpoint($width-medium, 12)
+          width: 50%
+        .google
+          width: 100%
+          +susy-breakpoint($width-medium, 12)
+            width: 41%
+    .more
+      border-top: 1px solid #000
+      clear: both

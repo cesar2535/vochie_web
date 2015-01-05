@@ -36,4 +36,42 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
       console.error "Get User's Data"
       console.error errorRes
       return errorRes.data
+
+  getFollowList: (userId, product = 'pop') ->
+    apiKey = apiConfig.productCheck product
+    $http
+      url: apiConfig.rest_url '/user/followlist/2'
+      params:
+        app: apiKey.app
+        secret: apiKey.secret
+        user_id: userId
+      method: 'get'
+    .then (successRes) ->
+      console.info "----- Get Follow List -----"
+      console.log successRes
+      return successRes.data
+    , (errorRes) ->
+      console.error "Get Follow List"
+      console.error errorRes
+      return errorRes.data
+      
+  getPinsList: (userId, pageSize, page, product = 'pop') ->
+    apiKey = apiConfig.productCheck product
+    $http
+      url: apiConfig.rest_url '/user/pinlist'
+      params:
+        app: apiKey.app
+        secret: apiKey.secret
+        user_id: userId
+        limit: pageSize
+        page: page
+      method: 'get'
+    .then (successRes) ->
+      console.info "----- Get Pins List -----"
+      console.log successRes
+      return successRes.data
+    , (errorRes) ->
+      console.error "Get Pins List"
+      console.error errorRes
+      return errorRes.data
 ]

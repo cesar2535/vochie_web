@@ -3,7 +3,7 @@ myApp = angular.module 'myApp',['ui.router','ngSanitize','ngCookies','ngAnimate'
 myApp.constant 'apiConfig',
   firebase: 'https://singnshare.firebaseio.com'
   # server: 'https://dev2.karaokecloud.com'
-  server: 'https://api2.karaokecloud.com'
+  server: 'http://api2.karaokecloud.com'
   app: 'lJWEvgxVzY'
   key: 'uit8SbrlYwxVVvdaEvjOUFxRk48RZHQuZjBRv4dtzKpugDFV0Y'
   popApp: '1bVMwIJS6h'
@@ -74,15 +74,15 @@ myApp.config ['$locationProvider','$stateProvider', '$urlRouterProvider', '$anal
       controller: 'RecordingCtrl'
     .state 'root.user.pin',
       url: '/pins'
-      templateUrl: ''
-      controller: ''
+      templateUrl: 'views/user/pinslist.html'
+      controller: 'PinsCtrl'
     .state 'root.user.follow',
       url: '/follow'
-      templateUrl: ''
+      templateUrl: 'views/user/follow.html'
       controller: ''
-    .state 'root.user.followed',
-      url: '/followed'
-      templateUrl: ''
+    .state 'root.user.follower',
+      url: '/follower'
+      templateUrl: 'views/user/follower.html'
       controller: ''
     .state 'pop',
       url: '/pop'

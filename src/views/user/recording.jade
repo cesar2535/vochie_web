@@ -1,2 +1,75 @@
-#recordings-list
-  
+#recording-list
+  .pop
+    .main-title
+      i.icon-music
+      span Vōchie-Pop Recording / total: {{popCovers.total}}
+    .list
+      .item(ng-repeat="cover in popCovers.list")
+        .control
+        .image(hide-lazy='')
+          img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png")
+          img(alt="Cover Image", ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}")
+          button.playback
+            i.icon-play
+        ul.content
+          li.title
+            a(ui-sref='pop.cover({id: cover._id})') {{cover.song.Title}}
+        ul.interaction
+          li.play-count
+            i.fa.fa-play
+            span {{cover.play_count}}
+          li.thumbs-up
+            i.icon-like
+            span(ng-if='cover.likes==undefined') 0
+            span(ng-if='cover.likes!=undefined') {{cover.likes.total}}
+      .empty.rec(ng-if='popCovers.total == 0 && !isOwner')
+        i.fa.fa-microphone.fa-5x
+        h2 This user does not have any public recordings.
+      .empty.rec(ng-if="popCovers.total == 0 && isOwner")
+        h2 Shell we sing?
+        i.fa.fa-microphone.fa-5x
+        .download-wrap
+          h3 Download app and start to record your first song!
+          a.google(href='https://play.google.com/store/apps/details?id=com.deansoft.singnshare', target='_blank')
+            img(alt='Google Play', src='images/btn_android.png')
+          a.apple(href='https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&mt=8', target='_blank')
+            img(alt='Apple App Store', src='images/btn_appStore.png')
+      .more(ng-hide="popCovers.total == 0")
+        button(ng-disabled="popCovers.list.length == popCovers.total || popCovers.total == 0 || popCovers.total == undefined")
+  .country
+    .main-title
+      i.icon-music
+      span Vōchie-Country Recording / total: {{countryCovers.total}}
+    .list
+      .item(ng-repeat="cover in countryCovers.list")
+        .control
+        .image(hide-lazy='')
+          img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png")
+          img(alt="Cover Image", ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}")
+          button.playback
+            i.icon-play
+        ul.content
+          li.title
+            a(ui-sref='pop.cover({id: cover._id})') {{cover.song.Title}}
+        ul.interaction
+          li.play-count
+            i.fa.fa-play
+            span {{cover.play_count}}
+          li.thumbs-up
+            i.icon-like
+            span(ng-if='cover.likes==undefined') 0
+            span(ng-if='cover.likes!=undefined') {{cover.likes.total}}
+      .empty.rec(ng-if=' countryCovers.total == 0 && !isOwner ')
+        i.fa.fa-microphone.fa-5x
+        h2 This user does not have any public recordings.
+      .empty.rec(ng-if="countryCovers.total == 0 && isOwner")
+        h2 Shell we sing?
+        i.fa.fa-microphone.fa-5x
+        .download-wrap
+          h3 Download app and start to record your first song!
+          a.google(href='https://play.google.com/store/apps/details?id=com.deansoft.singnshare', target='_blank')
+            img(alt='Google Play', src='images/btn_android.png')
+          a.apple(href='https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&mt=8', target='_blank')
+            img(alt='Apple App Store', src='images/btn_appStore.png')
+      .more(ng-hide="countryCovers.total == 0")
+        button(ng-disabled="countryCovers.list.length == countryCovers.total || countryCovers.total == 0 || countryCovers.total == undefined")

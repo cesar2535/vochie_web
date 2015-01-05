@@ -1,1 +1,67 @@
 #pins-list
+  .pop
+    .main-title
+      i.icon-pushpin
+      span Vōchie-Pop Pins / total: {{popPins.total}}
+    .list
+      .item(ng-repeat="cover in popPins.list")
+        .control
+        .image(hide-lazy='')
+          img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png")
+          img(alt="Cover Image", ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}")
+          button.playback
+            i.icon-play
+        ul.content
+          li.title
+            a(ui-sref='pop.cover({id: cover._id})') {{cover.song.Title}}
+        ul.interaction
+          li.play-count
+            i.fa.fa-play
+            span {{cover.play_count}}
+          li.thumbs-up
+            i.icon-like
+            span(ng-if='cover.likes==undefined') 0
+            span(ng-if='cover.likes!=undefined') {{cover.likes.total}}
+      .empty(ng-if="popPins.total == 0 && !isOwner")
+        i.fa.fa-microphone.fa-5x
+        p This user does not have any pinned recordings.
+        a(ui-sref="root.home") Click here to download the Sing-N-Share app and create your own great recordings!
+      .empty(ng-if="popPins.total == 0 && isOwner")
+        i.fa.fa-microphone.fa-5x
+        p You does not pin any recordings.
+        a(ui-sref="root.home") Click here to download the Sing-N-Share app and create your own great recordings!
+      .more(ng-hide="popPins.total == 0")
+        button(ng-disabled="popPins.list.length == popPins.total || popPins.total == 0 || popPins.total == undefined")
+  .country
+    .main-title
+      i.icon-pushpin
+      span Vōchie-Country Pins / total: {{countryPins.total}}
+    .list
+      .item(ng-repeat="cover in countryPins.list")
+        .control
+        .image(hide-lazy='')
+          img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png")
+          img(alt="Cover Image", ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}")
+          button.playback
+            i.icon-play
+        ul.content
+          li.title
+            a(ui-sref='pop.cover({id: cover._id})') {{cover.song.Title}}
+        ul.interaction
+          li.play-count
+            i.fa.fa-play
+            span {{cover.play_count}}
+          li.thumbs-up
+            i.icon-like
+            span(ng-if='cover.likes==undefined') 0
+            span(ng-if='cover.likes!=undefined') {{cover.likes.total}}
+      .empty(ng-if="countryPins.total == 0 && !isOwner")
+        i.fa.fa-microphone.fa-5x
+        p This user does not have any pinned recordings.
+        a(ui-sref="root.home") Click here to download the Sing-N-Share app and create your own great recordings!
+      .empty(ng-if="countryPins.total == 0 && isOwner")
+        i.fa.fa-microphone.fa-5x
+        p You does not pin any recordings.
+        a(ui-sref="root.home") Click here to download the Sing-N-Share app and create your own great recordings!
+      .more(ng-hide="countryPins.total == 0")
+        button(ng-disabled="countryPins.list.length == countryPins.total || countryPins.total == 0 || countryPins.total == undefined")

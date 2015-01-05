@@ -1,20 +1,41 @@
-#user-profile
+#user-profile.container
   .info
     .picture-block
+      .picture(hide-lazy='')
+        img(alt='Avatar', ng-src='https://do4n1cuexrn6s.cloudfront.net/user/{{userProfile._id}}_medium.png')
     .description-block
+      .username
+        h1 {{userProfile.username}}
+        .material-input(ng-show='isOwner')
+          input(name='edit username', ng-enter="")
+          span.highlight
+          span.bar
+          label Name
+      .follow-button(ng-if="!isOwner")
+        a.follow(ng-if='!isFollowing')
+          i.icon-follow_0
+          span Follow
+        a.unfollow(ng-if='isFollowing')
+          i.icon-follow_1
+          span Unfollow
+      .description
+        h3 {{userProfile.profile || "Tell the Sing-N-Share community about yourself, your event, or anything you want to share!"}}
+        .material-input(ng-show='isOwner')
+          input(name='edit profile', ng-enter="")
+          span.highlight
+          span.bar
+          label Description
+      .edit-button
+        button(ng-if='isOwner', title='Edit profile')
+          i.icon-edit
   .tabs
-    ul
+    ul.nav.nav-pills.nav-justified
       li
-        a(href="")
+        a(ui-sref="root.user.rec({ id: userProfile._id })", ng-class="{ active: state == 'records'}") Recording
       li
-        a(href="")
+        a(ui-sref="root.user.pin({ id: userProfile._id })", ng-class="{ active: state == 'pins'}") Pins
       li
-        a(href="")
+        a(ui-sref="root.user.follow({ id: userProfile._id })", ng-class="{ active: state == 'follow'}") Following
       li
-        a(href="")
-  .select
-    select.selectpicker
-      option(value="") Recording
-      option(value="") Pins
-      option(value="") Following
-      option(value="") Followers
+        a(ui-sref="root.user.follower({ id: userProfile._id })", ng-class="{ active: state == 'follower'}") Follower
+  ui-view(autoscroll="false")
