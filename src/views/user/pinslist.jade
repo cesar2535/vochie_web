@@ -30,8 +30,9 @@
         i.fa.fa-microphone.fa-5x
         p You does not pin any recordings.
         a(ui-sref="root.home") Click here to download the Sing-N-Share app and create your own great recordings!
-      .more(ng-hide="popPins.total == 0")
-        button(ng-disabled="popPins.list.length == popPins.total || popPins.total == 0 || popPins.total == undefined")
+      .more(ng-hide="popPins.total == 0 || popPins.list.length == popPins.total")
+        button(ng-click="morePins.pop()", ng-disabled="popPins.list.length == popPins.total || popPins.total == 0 || popPins.total == undefined")
+          i.icon-arrow-down
   .country
     .main-title
       i.icon-pushpin
@@ -63,5 +64,6 @@
         i.fa.fa-microphone.fa-5x
         p You does not pin any recordings.
         a(ui-sref="root.home") Click here to download the Sing-N-Share app and create your own great recordings!
-      .more(ng-hide="countryPins.total == 0")
-        button(ng-disabled="countryPins.list.length == countryPins.total || countryPins.total == 0 || countryPins.total == undefined")
+      .more(ng-hide="countryPins.total == 0 || countryPins.list.length == countryPins.total")
+        button(ng-click="morePins.country()", ng-disabled="countryPins.list.length == countryPins.total || countryPins.total == 0 || countryPins.total == undefined")
+          i.icon-arrow-down
