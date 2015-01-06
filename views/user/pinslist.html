@@ -22,8 +22,8 @@
       <div ng-if="popPins.total == 0 &amp;&amp; isOwner" class="empty"><i class="fa fa-microphone fa-5x"></i>
         <p>You does not pin any recordings.</p><a ui-sref="root.home">Click here to download the Sing-N-Share app and create your own great recordings!</a>
       </div>
-      <div ng-hide="popPins.total == 0" class="more">
-        <button ng-disabled="popPins.list.length == popPins.total || popPins.total == 0 || popPins.total == undefined"></button>
+      <div ng-hide="popPins.total == 0 || popPins.list.length == popPins.total" class="more">
+        <button ng-click="morePins.pop()" ng-disabled="popPins.list.length == popPins.total || popPins.total == 0 || popPins.total == undefined"><i class="icon-arrow-down"></i></button>
       </div>
     </div>
   </div>
@@ -49,8 +49,8 @@
       <div ng-if="countryPins.total == 0 &amp;&amp; isOwner" class="empty"><i class="fa fa-microphone fa-5x"></i>
         <p>You does not pin any recordings.</p><a ui-sref="root.home">Click here to download the Sing-N-Share app and create your own great recordings!</a>
       </div>
-      <div ng-hide="countryPins.total == 0" class="more">
-        <button ng-disabled="countryPins.list.length == countryPins.total || countryPins.total == 0 || countryPins.total == undefined"></button>
+      <div ng-hide="countryPins.total == 0 || countryPins.list.length == countryPins.total" class="more">
+        <button ng-click="morePins.country()" ng-disabled="countryPins.list.length == countryPins.total || countryPins.total == 0 || countryPins.total == undefined"><i class="icon-arrow-down"></i></button>
       </div>
     </div>
   </div>

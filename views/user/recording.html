@@ -25,8 +25,8 @@
           <h3>Download app and start to record your first song!</h3><a href="https://play.google.com/store/apps/details?id=com.deansoft.singnshare" target="_blank" class="google"><img alt="Google Play" src="images/btn_android.png"/></a><a href="https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&amp;mt=8" target="_blank" class="apple"><img alt="Apple App Store" src="images/btn_appStore.png"/></a>
         </div>
       </div>
-      <div ng-hide="popCovers.total == 0" class="more">
-        <button ng-disabled="popCovers.list.length == popCovers.total || popCovers.total == 0 || popCovers.total == undefined"></button>
+      <div ng-hide="popCovers.total == 0 || popCovers.list.length == popCovers.total" class="more">
+        <button ng-click="moreRecording.pop()" ng-disabled="popCovers.list.length == popCovers.total || popCovers.total == 0 || popCovers.total == undefined"><i class="icon-arrow-down"></i></button>
       </div>
     </div>
   </div>
@@ -55,8 +55,8 @@
           <h3>Download app and start to record your first song!</h3><a href="https://play.google.com/store/apps/details?id=com.deansoft.singnshare" target="_blank" class="google"><img alt="Google Play" src="images/btn_android.png"/></a><a href="https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&amp;mt=8" target="_blank" class="apple"><img alt="Apple App Store" src="images/btn_appStore.png"/></a>
         </div>
       </div>
-      <div ng-hide="countryCovers.total == 0" class="more">
-        <button ng-disabled="countryCovers.list.length == countryCovers.total || countryCovers.total == 0 || countryCovers.total == undefined"></button>
+      <div ng-hide="countryCovers.total == 0 || countryCovers.list.length == countryCovers.total" class="more">
+        <button ng-click="moreRecording.country()" ng-disabled="countryCovers.list.length == countryCovers.total || countryCovers.total == 0 || countryCovers.total == undefined"><i class="icon-arrow-down"></i></button>
       </div>
     </div>
   </div>

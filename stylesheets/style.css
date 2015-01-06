@@ -1986,6 +1986,14 @@ footer {
   border-top: 1px solid #000;
   clear: both;
 }
+#recording-list .list .more button, #pins-list .list .more button, #follows-list .list .more button, #followers-list .list .more button {
+  width: 100%;
+  font-size: 20px;
+  color: #000;
+}
+#recording-list .list .more button:disabled, #pins-list .list .more button:disabled, #follows-list .list .more button:disabled, #followers-list .list .more button:disabled {
+  display: none;
+}
 
 #follows-list .list .item .image, #followers-list .list .item .image {
   background-image: url(../images/avatar.png);
