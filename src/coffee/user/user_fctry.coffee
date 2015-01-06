@@ -5,7 +5,10 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
     user = $cookieStore.get 'currentUser'
     if !user
       console.error 'No login user'
-      return
+      $rootScope.user = {}
+      user = $rootScope.user
+      $cookieStore.put 'currentUser', {}
+
     this.getUserData undefined, user.accessToken
     .then (successRes) ->
       if successRes.msg is 'token error' or successRes.msg is 'not found user'
