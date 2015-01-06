@@ -45,6 +45,7 @@ myApp.factory 'ExploreFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConf
         page: page
         title: title
         artistname: artistName
+        genrename: genre
         sort: sort
       timeout: canceler.promise
       method: 'get'
@@ -53,4 +54,35 @@ myApp.factory 'ExploreFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConf
       console.info "----- Get Media -----"
       console.log successRes
       return successRes.data
+    , (errorRes) ->
+      console.error "Abort Ajax Get Media"
+      console.error errorRes
+      return errorRes.data
+  getMediaSearch: (product = 'pop', pageSize, page, genre, title, artistName, sort = 'Title:1') ->
+    apiKey = apiConfig.productCheck product
+    if canceler
+      canceler.resolve()
+    canceler = $q.defer()
+    $http
+      url: apiConfig.rest_url '/media/search'
+      params:
+        app: apiKey.app
+        secret: apiKey.secret
+        limit: pageSize
+        page: page
+        title: title
+        artistname: artistName
+        genrename: genre
+        sort: sort
+      timeout: canceler.promise
+      method: 'get'
+      cache: true
+    .then (successRes) ->
+      console.info "----- Get Media Search -----"
+      console.log successRes
+      return successRes.data
+    , (errorRes) ->
+      console.error "Abort Ajax Get Media Search"
+      console.error errorRes
+      return errorRes.data
 ]

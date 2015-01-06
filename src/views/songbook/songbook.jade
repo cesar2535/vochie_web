@@ -6,3 +6,77 @@
       | explore 
       a(ui-sref="{{description.link}}") {{description.text}}
   #songbook-table
+    #page-size-option
+      select(ng-init="songbookOption.pageSize=10", ng-model="songbookOption.pageSize", ng-options="list as list for list in pageSizesList")
+      span items per page
+    table.table.table-striped.table-hover.songs-table
+      thead
+        tr.row_1
+          th.cell_1
+            | Song
+            button.sort(ng-click="songbookOption.sort='Title:1'", ng-disabled="songbookOption.sort=='Title:1'")
+              i.fa.fa-sort-alpha-asc
+            button.sort(ng-click="songbookOption.sort='Title:-1'", ng-disabled="songbookOption.sort=='Title:-1'")
+              i.fa.fa-sort-alpha-desc
+          th.cell_2
+            | Artist
+            button.sort(ng-click="songbookOption.sort='ArtistName:1'", ng-disabled="songbookOption.sort=='ArtistName:1'")
+              i.fa.fa-sort-alpha-asc
+            button.sort(ng-click="songbookOption.sort='ArtistName:-1'", ng-disabled="songbookOption.sort=='ArtistName:-1'")
+              i.fa.fa-sort-alpha-desc
+          th.cell_3 Genre
+          th.cell_4
+            button.sort(ng-class="{ active: songbookOption.sort=='CoverCount:-1' }", ng-click='changeRecSort()')
+              | REC.
+              i.fa.fa-long-arrow-down
+        tr
+          th
+            input.filter(ng-model='songbookOption.title', placeholder='Filter by song title', type='text')
+            button.icons(ng-click="songbookOption.title=''", ng-disabled='songbookOption.title==undefined || songbookOption.title.length==0')
+              i.fa.fa-times
+          th
+            input.filter(ng-model='songbookOption.artist', placeholder='Filter by Artist', type='text')
+            button.icons(ng-click="songbookOption.artist=''", ng-disabled='songbookOption.artist==undefined || songbookOption.artist.length==0')
+              i.fa.fa-times
+          th.cell_3
+            select#genre-select(ng-model='songbookOption.genre', ng-options='genre.category as genre.category for genre in genreList')
+              option(value='') -- All --
+          th
+            span.rest-sort(ng-click="resetOptions()") Reset
+      tbody
+        tr(ng-repeat='song in songs.list')
+          td
+            .title {{song.Title}}
+          td
+            .artist {{song.ArtistName}}
+          td.cell_3
+            .genrename {{song.GenreName}}
+          td
+            .recording(data-id='{{song.InternalID}}')
+              button.recording(ng-click='showRec(song.InternalID)', ng-disabled='song.CoverCount==undefined')
+                i.fa.fa-headphones
+                span.text(ng-if='song.CoverCount==undefined') 0
+                span.text {{song.CoverCount}}
+    .empty(ng-if='!songs.total')
+      div
+        | Sorry, can not find 
+        span(ng-if='songbookOption.title')   "Title: {{songbookOption.title}} "
+        sapn(ng-if='songbookOption.artist')   "Artist: {{songbookOption.artist}}. "
+  #pagination(ng-hide="songs.total == 0 || !songs.total")
+    pagination.pull-right(total-items="songs.total", items-per-page="songbookOption.pageSize", ng-model="songbookOption.page", max-size="5", boundary-links="true")
+    pager#pager(total-items="songs.total", items-per-page="songbookOption.pageSize", ng-model="songbookOption.page")
+    pre Page: {{songbookOption.page}} / {{songs.pagesNum}}
+    //- nav
+    //-   ul.pagination
+    //-     li(ng-class="{ disabled: songbookOption.page == 0}", ng-click="songbookOption.page = 0")
+    //-       a First
+    //-     li(ng-class="{ disabled: songbookOption.page == 0}", ng-click="changePage(-1)")
+    //-       a(aria-label="Previous")
+    //-         span(aria-hidden="true") &laquo;
+    //-     li(ng-repeat="pageNum in pagesList", ng-class="{ active: songbookOption.page + 1 == pageNum}", ng-click="jumpToPage(pageNum)")
+    //-       a {{pageNum}}
+    //-     li(ng-class="{ disabled: songbookOption.page + 1 == songs.pagesNum}", ng-click="changePage(1)")
+    //-       a(aria-label="Next")
+    //-         span(aria-hidden="true") &raquo;
+    //-     li(ng-class="{ disabled: songbookOption.page + 1 == songs.pagesNum}", ng-click="songbookOption.page = songs.pagesNum - 1")
+    //-       a Last
