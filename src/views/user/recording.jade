@@ -34,8 +34,9 @@
             img(alt='Google Play', src='images/btn_android.png')
           a.apple(href='https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&mt=8', target='_blank')
             img(alt='Apple App Store', src='images/btn_appStore.png')
-      .more(ng-hide="popCovers.total == 0")
-        button(ng-disabled="popCovers.list.length == popCovers.total || popCovers.total == 0 || popCovers.total == undefined")
+      .more(ng-hide="popCovers.total == 0 || popCovers.list.length == popCovers.total")
+        button(ng-click="moreRecording.pop()", ng-disabled="popCovers.list.length == popCovers.total || popCovers.total == 0 || popCovers.total == undefined")
+          i.icon-arrow-down
   .country
     .main-title
       i.icon-music
@@ -71,5 +72,6 @@
             img(alt='Google Play', src='images/btn_android.png')
           a.apple(href='https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&mt=8', target='_blank')
             img(alt='Apple App Store', src='images/btn_appStore.png')
-      .more(ng-hide="countryCovers.total == 0")
-        button(ng-disabled="countryCovers.list.length == countryCovers.total || countryCovers.total == 0 || countryCovers.total == undefined")
+      .more(ng-hide="countryCovers.total == 0 || countryCovers.list.length == countryCovers.total")
+        button(ng-click="moreRecording.country()", ng-disabled="countryCovers.list.length == countryCovers.total || countryCovers.total == 0 || countryCovers.total == undefined")
+          i.icon-arrow-down
