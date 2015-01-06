@@ -8,7 +8,7 @@
       .description
         h2 {{coverInfo.title}}
         h4
-          a(ui-sref="root.user({ id: coverInfo.userId })") {{coverInfo.username}}
+          a(ui-sref="root.user.rec({ id: coverInfo.userId })") {{coverInfo.username}}
         span {{coverInfo.createdAt}}
         .interaction
           .playback.count
@@ -27,12 +27,54 @@
             i.icon-comment
             br
             span {{coverInfo.commentCount}}
-    .comment-block
+    #comment-block
+      .header
+        h3 Comments
       .comment-edit
-
+        .avatar
+          .square
+            .padding
+              .image
+                img.lazy(alt="User Avatar", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{user._id}}_medium.png", ng-hide="user._id == undefined")
+        form.comment-form()
+          textarea.content(ng-disabled="!user._id", placeholder='My comment...', type='text')
+          button.submit.pull-right(type="submit", ng-disabled="!user._id") POST
       .comments
-        .comment
-
+        .comment(ng-repeat="comment in comments.list")
+          .avatar
+            .square
+              .padding
+                .image
+                  img.lazy(alt="User Avatar", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{comment.user_id}}_medium.png")
+          .content
+            .username
+              a(ui-sref="root.user.rec({ id: comment.user_id })") {{comment.user_name}}
+            .remove-btn(ng-init='deleteMode = false')
+              button.close(ng-click='deleteMode=true', ng-show='comment.user_id == user._id || coverInfo.userId == user._id')
+                i.icon-delete
+              .del-alert(ng-click='deleteMode = false', ng-show='deleteMode')
+                .del-btn(ng-click='$event.stopPropagation()')
+                  button.close(ng-click='deleteMode=false; $event.stopPropagation()')
+                    i.icon-delete
+                  ul.content
+                    li.warning
+                      i.icon-warning
+                    li.emphasis
+                      p
+                        | Are you sure you want to delete this comment?
+                        br
+                        | This action 
+                        b CANNOT 
+                        | be undone.
+                  button.del
+                    span Delete
+                  button.cancel(ng-click='deleteMode = false')
+                    span Cancel
+            .text(ng-bind-html="comment.comment")
+            .created-at
+        .more(ng-hide="comments.total == 0")
+          button(ng-disabled='comments.list.length == comments.total')
+            i.icon-arrow-down
   #right-column
     .product
       h4 

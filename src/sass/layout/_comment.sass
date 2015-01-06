@@ -1,0 +1,167 @@
+#comment-block
+  +span(12)
+  padding: 10px
+  .header
+    border-top: 1px solid #ccc
+    padding: 10px
+
+.comment-edit, .comment
+  .avatar
+    .square
+      position: relative
+      width: 100%
+      padding-top: 100%
+      .padding
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        +box-sizing(border-box)
+        padding: 10px
+        +susy-breakpoint($width-small, 12)
+          padding: 15px
+        +susy-breakpoint($width-medium, 12)
+          padding: 18px
+        .image
+          width: 100%
+          height: 100%
+          +background(url(../images/avatar.png))
+          +background-size(cover)
+          border-radius: 50%
+          overflow: hidden
+          img
+            width: 100%
+            height: 100%
+
+.comment-edit
+  +span(12)
+  .avatar
+    +span(last 3)
+  .comment-form
+    +span(9)
+    +box-sizing(border-box)
+    position: relative
+    margin-bottom: 0.5em
+    .content
+      +span(12)
+      border: 0
+      background: $blue
+      color: #fff
+      padding: 8px
+      height: 120px
+      word-break: normal
+      resize: none
+      +box-sizing(border-box)
+      +input-placeholder
+        color: $white
+      &:disabled
+        background: #ccc
+      &:focus
+        background: #fff
+        color: #131723
+        border: 1px solid $blue
+    .submit
+      background: $blue
+      color: #fff
+      border: 0
+      padding: 10px 20px
+      margin-top: 5px
+      &:disabled
+        background: #ccc
+
+.comments
+  +span(12)
+  .comment
+    +span(12)
+    margin-bottom: 0.5em
+    border-bottom: 1px solid #ccc
+    .avatar
+      +span(3)
+    .content
+      +span(last 9)
+      +box-sizing(border-box)
+      padding: 0.5em
+      background: #fff
+      position: relative
+      .username
+        +span(12)
+        border-bottom: 1px solid #ccc
+        min-height: 21px
+      .remove-btn
+        text-align: right
+        position: absolute
+        right: 0
+        top: 0
+        .close
+          font-size: 12px
+          width: 40px
+          height: 28px
+          outline: none
+        .del-alert
+          position: fixed
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+          background: rgba(0,0,0,0.8)
+          z-index: 1000
+        .del-alert
+          +transition(0.3s linear all)
+          opacity: 1
+          &.ng-hide
+            opacity: 0
+          &.ng-hide-add, &.ng-hide-remove
+            display: block !important
+        .del-btn
+          position: fixed
+          top: 50%
+          left: 50% 
+          width: 320px
+          margin-top: -160px
+          margin-left: -160px
+          background: $white
+          color: #131723 
+          text-align: left
+          z-index: 1
+          +box-sizing(border-box)
+          padding: 1em
+          .close
+            padding: 0
+          .content
+            +span(12)
+            .warning
+              +span(3)
+              font-size: 55px
+              text-align: center
+            .emphasis
+              +span(last 9)
+          .del, .cancel
+            +span(6)
+            font-size: 18px
+            height: 35px
+            border: 0
+            background: $blue
+            color: #fff
+            span
+              margin-left: 0.5em
+          .del
+            +span(last 6)
+            background: $pink
+      .comment-content
+        +span(12)
+        min-height: 80px
+      .comment-create-at
+        +span(12)
+        border-top: 1px solid #ccc
+  .more
+    +span(12)
+    button
+      border: none
+      width: 100%
+      background-color: transparent
+      color: #fff
+      margin: 1em 0
+      padding: 0.5em
+      &:disabled
+        display: none

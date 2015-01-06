@@ -1,5 +1,5 @@
-myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', '$stateParams', 'CoverFctry', 'RankFctry',
-($scope, $rootScope, $timeout, $q, $state, $stateParams, CoverFctry, RankFctry) ->
+myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', '$stateParams', 'CoverFctry', 'RankFctry', 'CommentFctry',
+($scope, $rootScope, $timeout, $q, $state, $stateParams, CoverFctry, RankFctry, CommentFctry) ->
   $scope.coverInfo = 
     _id: ''
     userId: ''
@@ -16,6 +16,10 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
       this.userImage = "https://do4n1cuexrn6s.cloudfront.net/user/#{this.userId}_medium.png"
       this.coverImage = "https://do4n1cuexrn6s.cloudfront.net/cover/#{this._id}_medium.png"
       $('.lazy').lazyLoadXT({edgeY: '200'})
+
+  $scope.comments = 
+    list: []
+    total: 0
 
   $scope.recommend = 
     list: []
@@ -66,6 +70,13 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
         $scope.coverInfo.setImage()
       $rootScope.title = "Vōchie Pop - #{$scope.coverInfo.title} by #{$scope.coverInfo.username}"
       console.log $scope.coverInfo
+    CommentFctry.getCoverComments product, coverId, 10, 0
+    .then (successRes) ->
+      console.log successRes
+      if successRes.data
+        $scope.comments.list = successRes.data.rows
+        $scope.comments.total = successRes.data.total
+      console.log $scope.comments
 
   initailizeRecommends = (coverId, product) ->
     CoverFctry.getRecommend coverId, product
