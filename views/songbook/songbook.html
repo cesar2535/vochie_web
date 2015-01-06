@@ -5,5 +5,71 @@
     <p>Karaoke renditions. Not the original artists.</p>
     <h3 class="description">explore <a ui-sref="{{description.link}}">{{description.text}}</a></h3>
   </div>
-  <div id="songbook-table"></div>
+  <div id="songbook-table">
+    <div id="page-size-option">
+      <select ng-init="songbookOption.pageSize=10" ng-model="songbookOption.pageSize" ng-options="list as list for list in pageSizesList"></select><span>items per page</span>
+    </div>
+    <table class="table table-striped table-hover songs-table">
+      <thead>
+        <tr class="row_1">
+          <th class="cell_1">Song
+            <button ng-click="songbookOption.sort='Title:1'" ng-disabled="songbookOption.sort=='Title:1'" class="sort"><i class="fa fa-sort-alpha-asc"></i></button>
+            <button ng-click="songbookOption.sort='Title:-1'" ng-disabled="songbookOption.sort=='Title:-1'" class="sort"><i class="fa fa-sort-alpha-desc"></i></button>
+          </th>
+          <th class="cell_2">Artist
+            <button ng-click="songbookOption.sort='ArtistName:1'" ng-disabled="songbookOption.sort=='ArtistName:1'" class="sort"><i class="fa fa-sort-alpha-asc"></i></button>
+            <button ng-click="songbookOption.sort='ArtistName:-1'" ng-disabled="songbookOption.sort=='ArtistName:-1'" class="sort"><i class="fa fa-sort-alpha-desc"></i></button>
+          </th>
+          <th class="cell_3">Genre</th>
+          <th class="cell_4">
+            <button ng-class="{ active: songbookOption.sort=='CoverCount:-1' }" ng-click="changeRecSort()" class="sort">REC.<i class="fa fa-long-arrow-down"></i></button>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <input ng-model="songbookOption.title" placeholder="Filter by song title" type="text" class="filter"/>
+            <button ng-click="songbookOption.title=''" ng-disabled="songbookOption.title==undefined || songbookOption.title.length==0" class="icons"><i class="fa fa-times"></i></button>
+          </th>
+          <th>
+            <input ng-model="songbookOption.artist" placeholder="Filter by Artist" type="text" class="filter"/>
+            <button ng-click="songbookOption.artist=''" ng-disabled="songbookOption.artist==undefined || songbookOption.artist.length==0" class="icons"><i class="fa fa-times"></i></button>
+          </th>
+          <th class="cell_3">
+            <select id="genre-select" ng-model="songbookOption.genre" ng-options="genre.category as genre.category for genre in genreList">
+              <option value="">-- All --</option>
+            </select>
+          </th>
+          <th><span ng-click="resetOptions()" class="rest-sort">Reset</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="song in songs.list">
+          <td>
+            <div class="title">{{song.Title}}</div>
+          </td>
+          <td>
+            <div class="artist">{{song.ArtistName}}</div>
+          </td>
+          <td class="cell_3">
+            <div class="genrename">{{song.GenreName}}</div>
+          </td>
+          <td>
+            <div data-id="{{song.InternalID}}" class="recording">
+              <button ng-click="showRec(song.InternalID)" ng-disabled="song.CoverCount==undefined" class="recording"><i class="fa fa-headphones"></i><span ng-if="song.CoverCount==undefined" class="text">0</span><span class="text">{{song.CoverCount}}</span></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div ng-if="!songs.total" class="empty">
+      <div>Sorry, can not find <span ng-if="songbookOption.title">  "Title: {{songbookOption.title}} "</span>
+        <sapn ng-if="songbookOption.artist">  "Artist: {{songbookOption.artist}}. "</sapn>
+      </div>
+    </div>
+  </div>
+  <div id="pagination" ng-hide="songs.total == 0 || !songs.total">
+    <pagination total-items="songs.total" items-per-page="songbookOption.pageSize" ng-model="songbookOption.page" max-size="5" boundary-links="true" class="pull-right"></pagination>
+    <pager id="pager" total-items="songs.total" items-per-page="songbookOption.pageSize" ng-model="songbookOption.page"></pager>
+    <pre>Page: {{songbookOption.page}} / {{songs.pagesNum}}</pre>
+  </div>
 </div>

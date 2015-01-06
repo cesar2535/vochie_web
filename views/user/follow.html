@@ -1,0 +1,15 @@
+
+<div id="follows-list">
+  <div class="main-title"><i class="icon-pushpin"></i><span>Following</span><span ng-hide="followList.follow==0 || followList.follow==null" class="total">/ total: {{followList.follow.length}} </span></div>
+  <div class="list">
+    <div ng-repeat="item in followList.follow" class="item">
+      <div class="control"></div>
+      <div hide-lazy="" class="image"><img alt="Cover Image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.id}}_medium.png" class="lazy"/></div>
+      <ul class="content">
+        <li class="title"><a ui-sref="root.user.rec({id: item.id})">{{item.username}}</a></li>
+      </ul>
+    </div>
+    <div ng-if="!isOwner" class="empty"></div>
+    <div ng-if="isOwner" class="empty"></div>
+  </div>
+</div>

@@ -1,2 +1,49 @@
 
-<div id="user"></div>
+<div id="user-profile" class="container">
+  <div class="info">
+    <div class="picture-block">
+      <div hide-lazy="" class="picture"><img alt="Avatar" ng-src="https://do4n1cuexrn6s.cloudfront.net/user/{{userProfile._id}}_medium.png"/></div>
+    </div>
+    <div class="description-block">
+      <div class="username">
+        <h1 ng-hide="editMode.profile">{{userProfile.username}}</h1>
+        <div ng-show="isOwner &amp;&amp; editMode.profile" class="material-input">
+          <input type="text" name="edit username" ng-enter="editMode.profile=!editMode.profile; editFunc.setUsername(editMode.profile); editFunc.setDescription(editMode.profile)" ng-model="userProfile.username"/><span class="highlight"></span><span class="bar"></span>
+          <label>Name</label>
+        </div>
+      </div>
+      <div ng-if="!isOwner" class="follow-btn"><a ng-show="!isFollowing &amp;&amp; user._id" ng-click="follow()" class="follow"><i class="icon-follow_0"></i><span>Follow</span></a><a ng-show="isFollowing &amp;&amp; user._id" ng-click="unfollow()" class="unfollow"><i class="icon-follow_1"></i><span>Unfollow</span></a><a ng-hide="user._id"><span>Please login</span></a></div><br/>
+      <div class="description">
+        <h3 ng-hide="editMode.profile">{{userProfile.profile || "Tell the Sing-N-Share community about yourself, your event, or anything you want to share!"}}</h3>
+        <div ng-show="isOwner &amp;&amp; editMode.profile" class="material-input">
+          <input type="text" name="edit profile" ng-enter="editMode.profile=!editMode.profile; editFunc.setUsername(editMode.profile); editFunc.setDescription(editMode.profile)" ng-model="userProfile.profile"/><span class="highlight"></span><span class="bar"></span>
+          <label>Description</label>
+        </div>
+      </div>
+      <div class="edit-btn">
+        <button ng-if="isOwner" ng-click="editMode.profile=!editMode.profile; editFunc.setUsername(editMode.profile); editFunc.setDescription(editMode.profile)" title="Edit profile" class="edit btn"><i class="icon-edit"></i></button>
+        <button ng-click="editMode.email=!editMode.email;" ng-if="isOwner || userProfile.email.length &gt; 0" class="email btn"><i class="icon-email"></i></button><a ng-if="userProfile.email.length &gt; 0" href="mailTo:{{userProfile.email}}">{{userProfile.email}}</a>
+        <div ng-click="editMode.email=!editMode.email;" ng-if="editMode.email &amp;&amp; isOwner" class="edit-outer">
+          <div ng-click="$event.stopPropagation()" class="edit-wrapper">
+            <form ng-submit="editMode.email=!editMode.email;editFunc.setEmail(editMode.email)" class="email">
+              <input name="edit email" ng-model="userProfile.email" ng-show="isOwner" type="email" class="edit-input"/>
+              <label class="check pull-left">
+                <input name="public email" ng-change="editFunc.setEmailStatus(emailStatus)" ng-model="emailStatus" type="checkbox"/>Public
+              </label>
+              <input id="set-email" ng-disabled="!isOwner" type="submit" value="Submit" class="btn pull-right"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tabs">
+    <ul class="nav nav-pills nav-justified">
+      <li><a ui-sref="root.user.rec({ id: userProfile._id })" ng-class="{ active: state == 'records'}">Recording</a></li>
+      <li><a ui-sref="root.user.pin({ id: userProfile._id })" ng-class="{ active: state == 'pins'}">Pins</a></li>
+      <li><a ui-sref="root.user.follow({ id: userProfile._id })" ng-class="{ active: state == 'follow'}">Following</a></li>
+      <li><a ui-sref="root.user.follower({ id: userProfile._id })" ng-class="{ active: state == 'follower'}">Follower</a></li>
+    </ul>
+  </div>
+  <ui-view autoscroll="false"></ui-view>
+</div>

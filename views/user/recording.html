@@ -1,2 +1,63 @@
 
-<div id="recording"></div>
+<div id="recording-list">
+  <div class="pop">
+    <div class="main-title"><i class="icon-music"></i><span>Vōchie-Pop Recording / total: {{popCovers.total}}</span></div>
+    <div class="list">
+      <div ng-repeat="cover in popCovers.list" class="item">
+        <div class="control"></div>
+        <div hide-lazy="" class="image"><img alt="Cover Image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png" class="lazy"/><img alt="Cover Image" ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}"/>
+          <button class="playback"><i class="icon-play"></i></button>
+        </div>
+        <ul class="content">
+          <li class="title"><a ui-sref="pop.cover({id: cover._id})">{{cover.song.Title}}</a></li>
+        </ul>
+        <ul class="interaction">
+          <li class="play-count"><i class="fa fa-play"></i><span>{{cover.play_count}}</span></li>
+          <li class="thumbs-up"><i class="icon-like"></i><span ng-if="cover.likes==undefined">0</span><span ng-if="cover.likes!=undefined">{{cover.likes.total}}</span></li>
+        </ul>
+      </div>
+      <div ng-if="popCovers.total == 0 &amp;&amp; !isOwner" class="empty rec"><i class="fa fa-microphone fa-5x"></i>
+        <h2>This user does not have any public recordings.</h2>
+      </div>
+      <div ng-if="popCovers.total == 0 &amp;&amp; isOwner" class="empty rec">
+        <h2>Shell we sing?</h2><i class="fa fa-microphone fa-5x"></i>
+        <div class="download-wrap">
+          <h3>Download app and start to record your first song!</h3><a href="https://play.google.com/store/apps/details?id=com.deansoft.singnshare" target="_blank" class="google"><img alt="Google Play" src="images/btn_android.png"/></a><a href="https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&amp;mt=8" target="_blank" class="apple"><img alt="Apple App Store" src="images/btn_appStore.png"/></a>
+        </div>
+      </div>
+      <div ng-hide="popCovers.total == 0" class="more">
+        <button ng-disabled="popCovers.list.length == popCovers.total || popCovers.total == 0 || popCovers.total == undefined"></button>
+      </div>
+    </div>
+  </div>
+  <div class="country">
+    <div class="main-title"><i class="icon-music"></i><span>Vōchie-Country Recording / total: {{countryCovers.total}}</span></div>
+    <div class="list">
+      <div ng-repeat="cover in countryCovers.list" class="item">
+        <div class="control"></div>
+        <div hide-lazy="" class="image"><img alt="Cover Image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png" class="lazy"/><img alt="Cover Image" ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}"/>
+          <button class="playback"><i class="icon-play"></i></button>
+        </div>
+        <ul class="content">
+          <li class="title"><a ui-sref="pop.cover({id: cover._id})">{{cover.song.Title}}</a></li>
+        </ul>
+        <ul class="interaction">
+          <li class="play-count"><i class="fa fa-play"></i><span>{{cover.play_count}}</span></li>
+          <li class="thumbs-up"><i class="icon-like"></i><span ng-if="cover.likes==undefined">0</span><span ng-if="cover.likes!=undefined">{{cover.likes.total}}</span></li>
+        </ul>
+      </div>
+      <div ng-if=" countryCovers.total == 0 &amp;&amp; !isOwner " class="empty rec"><i class="fa fa-microphone fa-5x"></i>
+        <h2>This user does not have any public recordings.</h2>
+      </div>
+      <div ng-if="countryCovers.total == 0 &amp;&amp; isOwner" class="empty rec">
+        <h2>Shell we sing?</h2><i class="fa fa-microphone fa-5x"></i>
+        <div class="download-wrap">
+          <h3>Download app and start to record your first song!</h3><a href="https://play.google.com/store/apps/details?id=com.deansoft.singnshare" target="_blank" class="google"><img alt="Google Play" src="images/btn_android.png"/></a><a href="https://itunes.apple.com/us/app/sing-n-share/id774502972?ls=1&amp;mt=8" target="_blank" class="apple"><img alt="Apple App Store" src="images/btn_appStore.png"/></a>
+        </div>
+      </div>
+      <div ng-hide="countryCovers.total == 0" class="more">
+        <button ng-disabled="countryCovers.list.length == countryCovers.total || countryCovers.total == 0 || countryCovers.total == undefined"></button>
+      </div>
+    </div>
+  </div>
+</div>

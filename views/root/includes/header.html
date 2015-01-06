@@ -20,7 +20,7 @@
         </li>
         <li ng-show="user._id" class="dropdown"><a data-toggle="dropdown" ng-class="{ active: location == 'user' }" class="dropdown-toggle">{{user.name}}<strong class="caret"></strong></a>
           <ul class="dropdown-menu">
-            <li><a ui-sref="root.user({id: user._id })">Profile</a></li>
+            <li><a ui-sref="root.user.rec({id: user._id })">Profile</a></li>
             <li><a ng-click="logout()">Logout</a></li>
           </ul>
         </li>

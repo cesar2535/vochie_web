@@ -1,0 +1,57 @@
+
+<div id="pins-list">
+  <div class="pop">
+    <div class="main-title"><i class="icon-pushpin"></i><span>Vōchie-Pop Pins / total: {{popPins.total}}</span></div>
+    <div class="list">
+      <div ng-repeat="cover in popPins.list" class="item">
+        <div class="control"></div>
+        <div hide-lazy="" class="image"><img alt="Cover Image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png" class="lazy"/><img alt="Cover Image" ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}"/>
+          <button class="playback"><i class="icon-play"></i></button>
+        </div>
+        <ul class="content">
+          <li class="title"><a ui-sref="pop.cover({id: cover._id})">{{cover.song.Title}}</a></li>
+        </ul>
+        <ul class="interaction">
+          <li class="play-count"><i class="fa fa-play"></i><span>{{cover.play_count}}</span></li>
+          <li class="thumbs-up"><i class="icon-like"></i><span ng-if="cover.likes==undefined">0</span><span ng-if="cover.likes!=undefined">{{cover.likes.total}}</span></li>
+        </ul>
+      </div>
+      <div ng-if="popPins.total == 0 &amp;&amp; !isOwner" class="empty"><i class="fa fa-microphone fa-5x"></i>
+        <p>This user does not have any pinned recordings.</p><a ui-sref="root.home">Click here to download the Sing-N-Share app and create your own great recordings!</a>
+      </div>
+      <div ng-if="popPins.total == 0 &amp;&amp; isOwner" class="empty"><i class="fa fa-microphone fa-5x"></i>
+        <p>You does not pin any recordings.</p><a ui-sref="root.home">Click here to download the Sing-N-Share app and create your own great recordings!</a>
+      </div>
+      <div ng-hide="popPins.total == 0" class="more">
+        <button ng-disabled="popPins.list.length == popPins.total || popPins.total == 0 || popPins.total == undefined"></button>
+      </div>
+    </div>
+  </div>
+  <div class="country">
+    <div class="main-title"><i class="icon-pushpin"></i><span>Vōchie-Country Pins / total: {{countryPins.total}}</span></div>
+    <div class="list">
+      <div ng-repeat="cover in countryPins.list" class="item">
+        <div class="control"></div>
+        <div hide-lazy="" class="image"><img alt="Cover Image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png" class="lazy"/><img alt="Cover Image" ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}"/>
+          <button class="playback"><i class="icon-play"></i></button>
+        </div>
+        <ul class="content">
+          <li class="title"><a ui-sref="pop.cover({id: cover._id})">{{cover.song.Title}}</a></li>
+        </ul>
+        <ul class="interaction">
+          <li class="play-count"><i class="fa fa-play"></i><span>{{cover.play_count}}</span></li>
+          <li class="thumbs-up"><i class="icon-like"></i><span ng-if="cover.likes==undefined">0</span><span ng-if="cover.likes!=undefined">{{cover.likes.total}}</span></li>
+        </ul>
+      </div>
+      <div ng-if="countryPins.total == 0 &amp;&amp; !isOwner" class="empty"><i class="fa fa-microphone fa-5x"></i>
+        <p>This user does not have any pinned recordings.</p><a ui-sref="root.home">Click here to download the Sing-N-Share app and create your own great recordings!</a>
+      </div>
+      <div ng-if="countryPins.total == 0 &amp;&amp; isOwner" class="empty"><i class="fa fa-microphone fa-5x"></i>
+        <p>You does not pin any recordings.</p><a ui-sref="root.home">Click here to download the Sing-N-Share app and create your own great recordings!</a>
+      </div>
+      <div ng-hide="countryPins.total == 0" class="more">
+        <button ng-disabled="countryPins.list.length == countryPins.total || countryPins.total == 0 || countryPins.total == undefined"></button>
+      </div>
+    </div>
+  </div>
+</div>
