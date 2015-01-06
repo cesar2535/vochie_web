@@ -20,6 +20,9 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
   $scope.comments = 
     list: []
     total: 0
+    page: 0
+
+  $scope.editComment = undefined
 
   $scope.recommend = 
     list: []
@@ -70,12 +73,16 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
         $scope.coverInfo.setImage()
       $rootScope.title = "Vōchie Pop - #{$scope.coverInfo.title} by #{$scope.coverInfo.username}"
       console.log $scope.coverInfo
-    CommentFctry.getCoverComments product, coverId, 10, 0
+  
+  initailizeCommentsList = (coverId, product) ->
+    CommentFctry.getCoverComments product, coverId, 5, $scope.comments.page
     .then (successRes) ->
       console.log successRes
       if successRes.data
         $scope.comments.list = successRes.data.rows
         $scope.comments.total = successRes.data.total
+        for i in $scope.comments.list
+          i.comment = i.comment.replace /\\n/g, "<br>"
       console.log $scope.comments
 
   initailizeRecommends = (coverId, product) ->
@@ -119,9 +126,40 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
       $scope.mostLike.list = $scope.mostLike.fullList.splice 0, 5
       console.log $scope.mostLike
 
+  $scope.transferServerTime = (time) ->
+    server_time = new Date(time.replace(/-/g,'/')).getTime()
+    date = new Date()
+    localOffset = -1 * date.getTimezoneOffset() * 60000
+    return Math.round(new Date(server_time + localOffset).getTime())
 
+  $scope.commentFunc = 
+    moreComments: ->
+      $scope.comments.page++
+      CommentFctry.getCoverComments $rootScope.product.name, $stateParams.id, 5, $scope.comments.page
+      .then (successRes) ->
+        console.log successRes
+        if successRes.data
+          $scope.comments.list = $scope.comments.list.concat successRes.data.rows
+          $scope.comments.total = successRes.data.total
+          for i in $scope.comments.list
+            i.comment = i.comment.replace /\\n/g, "<br>"
+        console.log $scope.comments
+    post: ->
+      $scope.editComment = $scope.editComment.replace /\n/g, "\\n"
+      CommentFctry.postComment $stateParams.id, $scope.editComment
+      .then (successRes) ->
+        console.log successRes
+        $scope.editComment = ''
+        initailizeCommentsList $stateParams.id, $rootScope.product.name
+    remove: (commentId) ->
+      CommentFctry.removeComment $stateParams.id, commentId
+      .then (successRes) ->
+        console.log successRes
+
+        initailizeCommentsList $stateParams.id, $rootScope.product.name
 
   initializeCoverInfo $stateParams.id, $rootScope.product.name
+  initailizeCommentsList $stateParams.id, $rootScope.product.name
   initailizeRecommends $stateParams.id, $rootScope.product.name
   initializeMostLike()
 ]

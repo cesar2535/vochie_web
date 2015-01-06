@@ -9,7 +9,7 @@
         h2 {{coverInfo.title}}
         h4
           a(ui-sref="root.user.rec({ id: coverInfo.userId })") {{coverInfo.username}}
-        span {{coverInfo.createdAt}}
+        span {{transferServerTime(coverInfo.createdAt) | date:'yyyy-MM-dd HH:mm:ss'}}
         .interaction
           .playback.count
             i.fa.fa-play
@@ -36,9 +36,9 @@
             .padding
               .image
                 img.lazy(alt="User Avatar", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{user._id}}_medium.png", ng-hide="user._id == undefined")
-        form.comment-form()
-          textarea.content(ng-disabled="!user._id", placeholder='My comment...', type='text')
-          button.submit.pull-right(type="submit", ng-disabled="!user._id") POST
+        form.comment-form(ng-submit="commentFunc.post()")
+          textarea.content(ng-disabled="!user._id", ng-model="editComment", placeholder='My comment...', type='text')
+          button.submit.pull-right(type="submit", ng-disabled="editComment == undefined || editComment.length == 0 || !user._id") POST
       .comments
         .comment(ng-repeat="comment in comments.list")
           .avatar
@@ -66,14 +66,14 @@
                         | This action 
                         b CANNOT 
                         | be undone.
-                  button.del
+                  button.del(ng-click="deleteMode = false; commentFunc.remove(comment.id)")
                     span Delete
                   button.cancel(ng-click='deleteMode = false')
                     span Cancel
             .text(ng-bind-html="comment.comment")
-            .created-at
+            .created-at {{transferServerTime(comment.create_at) | date:'yyyy-MM-dd HH:mm:ss'}}
         .more(ng-hide="comments.total == 0")
-          button(ng-disabled='comments.list.length == comments.total')
+          button(ng-disabled='comments.list.length == comments.total', ng-click="commentFunc.moreComments()")
             i.icon-arrow-down
   #right-column
     .product

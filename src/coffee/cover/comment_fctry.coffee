@@ -30,7 +30,7 @@ myApp.factory 'CommentFctry', ['$rootScope', '$http', '$timeout', '$q', 'apiConf
     .then (successRes) ->
       console.info "----- Post Comment -----"
       console.log successRes
-      return successRes
+      return successRes.data
     , (errorRes) ->
       console.error "Post Comment"
       console.error errorRes
