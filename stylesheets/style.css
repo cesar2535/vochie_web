@@ -1526,19 +1526,20 @@ footer {
   margin-right: 0;
   background: #dd577a;
 }
-.comments .comment .content .comment-content {
+.comments .comment .content .text {
   width: 100%;
   float: left;
   margin-left: 0;
   margin-right: 0;
   min-height: 80px;
 }
-.comments .comment .content .comment-create-at {
+.comments .comment .content .created-at {
   width: 100%;
   float: left;
   margin-left: 0;
   margin-right: 0;
-  border-top: 1px solid #ccc;
+  text-align: right;
+  color: #ccc;
 }
 .comments .more {
   width: 100%;
@@ -1550,7 +1551,7 @@ footer {
   border: none;
   width: 100%;
   background-color: transparent;
-  color: #fff;
+  color: #000;
   margin: 1em 0;
   padding: 0.5em;
 }
