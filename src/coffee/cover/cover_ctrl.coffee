@@ -72,7 +72,7 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
         $scope.coverInfo.playCount = successRes.data.play_count
         $scope.coverInfo.path = successRes.data.path
         $scope.coverInfo.setImage()
-      $rootScope.title = "Vōchie Pop - #{$scope.coverInfo.title} by #{$scope.coverInfo.username}"
+      $rootScope.title = "Vōchie #{product.toUpperCase()} - #{$scope.coverInfo.title} by #{$scope.coverInfo.username}"
       console.log $scope.coverInfo
   
   initailizeCommentsList = (coverId, product) ->

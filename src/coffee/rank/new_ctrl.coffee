@@ -14,7 +14,7 @@ myApp.controller 'NewCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
     $scope.coverLink = 'country.cover'
 
   $scope.rank = 
-    title: 'NEW COVERS'
+    title: "WHAT'S NEW"
     type: 'new'
     subType: ''
     list: []

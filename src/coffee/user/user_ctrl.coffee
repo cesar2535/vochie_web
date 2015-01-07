@@ -2,7 +2,7 @@ myApp.controller 'UserCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state'
 ($scope, $rootScope, $timeout, $q, $state, $stateParams, $location, $cookieStore, UserFctry) ->
   console.log $state
 
-  $rootScope.title = 'User'
+  $rootScope.title = "Vōchie - User's Profile"
   $scope.userProfile = 
     _id: $stateParams.id
   $scope.editMode = 
@@ -34,10 +34,12 @@ myApp.controller 'UserCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state'
         $scope.userProfile = successRes.data
         $scope.userProfile._id = $stateParams.id
         console.log $scope.userProfile
+        $rootScope.title = "Vōchie - #{$scope.userProfile.username}"
       checkIsFollowing()
     else
       $scope.isOwner = true
       $scope.userProfile = $rootScope.user.profile
+      $rootScope.title = "Vōchie - #{$scope.userProfile.username}"
       console.log $scope.userProfile
       if $scope.userProfile.public_email is 0 or $scope.userProfile.public_email is false
         $scope.emailStatus = false
