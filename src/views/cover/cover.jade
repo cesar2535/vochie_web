@@ -5,6 +5,8 @@
         .image(hide-lazy='')
           img.lazy(alt="Cover image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo.userId}}_medium.png")
           img.lazy(alt="Cover image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo._id}}_medium.png")
+          button.playback(ng-click='playback(coverInfo)')
+            i.icon-play
       .description
         h2 {{coverInfo.title}}
         h4
@@ -95,6 +97,8 @@
             li.cover(hide-lazy='')
               img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png')
               img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png')
+              button.playback(ng-click='playback(item)')
+                i.icon-play
             li.description
               ul
                 li.title
@@ -122,6 +126,8 @@
             li.cover(hide-lazy='')
               img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png')
               img.lazy(alt='Cover image', data-src='https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png')
+              button.playback(ng-click='playback(item)')
+                i.icon-play
             li.description
               ul
                 li.title

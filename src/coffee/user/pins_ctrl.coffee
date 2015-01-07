@@ -40,6 +40,31 @@ myApp.controller 'PinsCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state'
           $scope.countryPins.list = $scope.countryPins.list.concat successRes.data.rows
           $scope.countryPins.total = successRes.data.total
         console.log $scope.countryPins
+        
+  $scope.playback = (item) ->
+    if myPlaylist.playlist.length is 0
+      myPlaylist.setPlaylist [
+        coverId: item._id
+        userId: item.user_id
+        username: item.user_name
+        title: item.song.Title
+        artist: item.user_name
+        m4a: item.path
+        playCount: item.play_count
+        likes: item.likes.total
+      ]
+    else 
+      myPlaylist.add 
+        coverId: item._id
+        userId: item.user_id
+        username: item.user_name
+        title: item.song.Title
+        artist: item.user_name
+        m4a: item.path
+        playCount: item.play_count
+        likes: item.likes.total
+    $rootScope.initPlayer = true
+    console.log myPlaylist
       
   initializeUserPins()
 ]

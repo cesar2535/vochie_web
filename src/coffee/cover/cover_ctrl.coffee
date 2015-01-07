@@ -70,6 +70,7 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
         $scope.coverInfo.likes = successRes.data.likes.total
         $scope.coverInfo.pinCount = successRes.data.pins.length
         $scope.coverInfo.playCount = successRes.data.play_count
+        $scope.coverInfo.path = successRes.data.path
         $scope.coverInfo.setImage()
       $rootScope.title = "Vōchie Pop - #{$scope.coverInfo.title} by #{$scope.coverInfo.username}"
       console.log $scope.coverInfo
@@ -121,6 +122,7 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
             status: item.song.status
             likes: item.song.likes.total
             playCount: item.count
+            path: item.song.path
             last: item.last
       $scope.mostLike.fullList = list
       $scope.mostLike.list = $scope.mostLike.fullList.splice 0, 5
@@ -131,6 +133,31 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
     date = new Date()
     localOffset = -1 * date.getTimezoneOffset() * 60000
     return Math.round(new Date(server_time + localOffset).getTime())
+
+  $scope.playback = (item) ->
+    if myPlaylist.playlist.length is 0
+      myPlaylist.setPlaylist [
+        coverId: item._id
+        userId: item.userId
+        username: item.username
+        title: item.title
+        artist: item.username
+        m4a: item.path
+        playCount: item.playCount
+        likes: item.likes
+      ]
+    else 
+      myPlaylist.add 
+        coverId: item._id
+        userId: item.userId
+        username: item.username
+        title: item.title
+        artist: item.username
+        m4a: item.path
+        playCount: item.playCount
+        likes: item.likes
+    $rootScope.initPlayer = true
+    console.log myPlaylist
 
   $scope.commentFunc = 
     moreComments: ->

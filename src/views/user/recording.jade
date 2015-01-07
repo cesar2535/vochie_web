@@ -9,7 +9,7 @@
         .image(hide-lazy='')
           img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png")
           img(alt="Cover Image", ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}")
-          button.playback
+          button.playback(ng-click="playback(cover)")
             i.icon-play
         ul.content
           li.title
@@ -47,7 +47,7 @@
         .image(hide-lazy='')
           img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png")
           img(alt="Cover Image", ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}")
-          button.playback
+          button.playback(ng-click="playback(cover)")
             i.icon-play
         ul.content
           li.title
