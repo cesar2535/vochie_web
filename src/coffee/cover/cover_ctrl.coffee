@@ -6,7 +6,7 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
     username: ''
     title: ''
     artist: ''
-    createdAt: ''
+    createdAt: undefined
     status: 0
     commentCount: 0
     likes: 0
