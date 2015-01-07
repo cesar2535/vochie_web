@@ -1,0 +1,50 @@
+#media-player
+  #jquery_jplayer_1.jp-jplayer
+  #jp_container_1.jp-audio(ng-class='{ slideUp: toggleStatus==false, slideDown: toggleStatus==true, active: initPlayer }')
+    .toggle-slide(ng-init='toggleStatus==undefined')
+      button.slide-up(ng-click='toggleStatus=!toggleStatus', ng-show='toggleStatus')
+        i.icon-arrow-up
+      button.slide-down(ng-click='toggleStatus=!toggleStatus', ng-hide='toggleStatus')
+        i.icon-arrow-down
+    .headphone
+      i.icon-headset
+    .jp-type-single
+      .jp-gui.jp-interface
+        ul.jp-controls
+          li
+            a.jp-previous(href='javascript:;', ng-click='previous()', tabindex='1') Previous 
+          li
+            a.jp-play(href='javascript:;', tabindex='1') Play
+          li
+            a.jp-pause(href='javascript:;', ng-click='pause()', tabindex='1') Pause
+          li
+            a.jp-next(href='javascript:;', ng-click='next()', tabindex='1') Next
+        .cover-image
+          .cover-user
+          .cover
+        .track-title
+          .jp-title
+            ul
+              li.songs-title
+        .jp-progress-bar()
+          .jp-current-time
+          .jp-progress
+            .jp-seek-bar
+              .jp-play-bar
+          .jp-duration
+        //- .jp-interaction
+          ul
+            li.favorite()
+              a.jp-favorite(ng-class='{ hover: pin, active: pinStatus }', ng-click='togglePin()', ng-if='user._id', ng-mouseleave='pin=false', ng-mouseover='pin=true')
+              a.jp-favorite(ng-click='togglePin()', ng-if='!user._id' sh-showform)
+            li.thumbs-up()
+              a.jp-thumbs-up(ng-class='{ hover: like, active: likeStatus }', ng-click='likeCover()', ng-if='user._id', ng-mouseleave='like=false', ng-mouseover='like=true')
+              a.jp-thumbs-up(ng-click='likeCover()', ng-if='!user._id' sh-showform)
+            li.share()
+              a.jp-share(ng-class='{ hover: share }', ng-click='socialShare()', ng-mouseleave='share=false', ng-mouseover='share=true')
+      .jp-playlist(style="display:none")
+        ul
+      .jp-no-solution
+        span Update Required
+        | To play the media you will need to either update your browser to a recent version or update your 
+        a(href='http://get.adobe.com/flashplayer/', ng-click='$event.stopPropagation()', target='_blank') Flash plugin    

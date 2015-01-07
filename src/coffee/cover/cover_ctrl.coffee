@@ -96,7 +96,7 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
           userId: item.user_id
           username: item.user_name
           title: item.song.Title
-          artist: item.song.ArtistName
+          artist: item.user_name
           status: item.status
           likes: item.likes.total
           playCount: item.play_count
@@ -117,7 +117,7 @@ myApp.controller 'CoverCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state
             userId: item.song.user_id
             username: item.song.user_name
             title: item.song.song.Title
-            artist: item.song.song.ArtistName
+            artist: item.song.user_name
             status: item.song.status
             likes: item.song.likes.total
             playCount: item.count

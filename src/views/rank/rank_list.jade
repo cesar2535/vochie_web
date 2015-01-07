@@ -21,7 +21,7 @@
             li.artist
               a(ui-sref='root.user.rec({id: item.userId})') {{item.username}}
         li.count
-          a.play(ng-click='playback($index,lists)')
+          a.play(ng-click='playback(item)')
             i.icon-play
           span.play-count {{item.playCount}}
         li.increasing

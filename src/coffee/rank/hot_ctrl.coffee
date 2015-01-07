@@ -32,7 +32,7 @@ myApp.controller 'HotCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
           userId: item.song.user_id
           username: item.song.user_name
           title: item.song.song.Title
-          artist: item.song.song.ArtistName
+          artist: item.song.user_name
           m4a: item.song.path
           playCount: item.count
           likes: item.song.likes.total
@@ -53,6 +53,14 @@ myApp.controller 'HotCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
       getRankList 'month'
       .then (successRes) ->
         $scope.rank.subType = subType
+
+  $scope.playback = (item) ->
+    if myPlaylist.playlist.length is 0
+      myPlaylist.setPlaylist [item]
+    else 
+      myPlaylist.add item
+    $rootScope.initPlayer = true
+    console.log myPlaylist
 
   $scope.changeSubType 'daily'
 ]

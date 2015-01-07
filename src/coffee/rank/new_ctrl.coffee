@@ -26,17 +26,25 @@ myApp.controller 'NewCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
       if successRes.data
         angular.forEach successRes.data, (cover) ->
           if cover.song
+            path = cover.path.replace 'http://voice.karaokecloud.com', 'https://d9rqh24few3wz.cloudfront.net'
             list.push 
               coverId: cover._id
               userId: cover.user_id
               username: cover.user_name
               title: cover.song.Title
-              artist: cover.song.ArtistName
-              m4a: cover.path
+              artist: cover.user_name
+              m4a: path
               playCount: cover.play_count
               likes: cover.likes
               last: cover.last
         $scope.rank.list = list.slice 0, 10
-        
+  
+  $scope.playback = (item) ->
+    if myPlaylist.playlist.length is 0
+      myPlaylist.setPlaylist [item]
+    else 
+      myPlaylist.add item
+    $rootScope.initPlayer = true
+
   getRankList()
 ]
