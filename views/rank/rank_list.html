@@ -17,7 +17,7 @@
             <li class="artist"><a ui-sref="root.user.rec({id: item.userId})">{{item.username}}</a></li>
           </ul>
         </li>
-        <li class="count"><a ng-click="playback($index,lists)" class="play"><i class="icon-play"></i></a><span class="play-count">{{item.playCount}}</span></li>
+        <li class="count"><a ng-click="playback(item)" class="play"><i class="icon-play"></i></a><span class="play-count">{{item.playCount}}</span></li>
         <li class="increasing"><i ng-class="{ 'icon-rise': item.last==-1 || $index &lt;= item.last, 'icon-down': $index &gt; item.last &amp;&amp; item.last!=-1 }"></i></li>
       </ul>
     </li>

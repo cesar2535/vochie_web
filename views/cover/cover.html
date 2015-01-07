@@ -3,7 +3,9 @@
   <div id="left-column">
     <div class="cover-info">
       <div class="cover">
-        <div hide-lazy="" class="image"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo.userId}}_medium.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo._id}}_medium.png" class="lazy"/></div>
+        <div hide-lazy="" class="image"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo.userId}}_medium.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{coverInfo._id}}_medium.png" class="lazy"/>
+          <button ng-click="playback(coverInfo)" class="playback"><i class="icon-play"></i></button>
+        </div>
       </div>
       <div class="description">
         <h2>{{coverInfo.title}}</h2>
@@ -83,7 +85,9 @@
       <ul class="rank-list">
         <li ng-repeat="item in recommend.list" class="rank-item">
           <ul class="item-group">
-            <li hide-lazy="" class="cover"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png" class="lazy"/></li>
+            <li hide-lazy="" class="cover"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png" class="lazy"/>
+              <button ng-click="playback(item)" class="playback"><i class="icon-play"></i></button>
+            </li>
             <li class="description">
               <ul>
                 <li class="title"><a ui-sref="{{coverLink}}({id: item.coverId})">{{item.title}}</a></li>
@@ -105,7 +109,9 @@
       <ul class="rank-list">
         <li ng-repeat="item in mostLike.list" class="rank-item">
           <ul class="item-group">
-            <li hide-lazy="" class="cover"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png" class="lazy"/></li>
+            <li hide-lazy="" class="cover"><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.userId}}_small.png" class="lazy"/><img alt="Cover image" data-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{item.coverId}}_small.png" class="lazy"/>
+              <button ng-click="playback(item)" class="playback"><i class="icon-play"></i></button>
+            </li>
             <li class="description">
               <ul>
                 <li class="title"><a ui-sref="{{coverLink}}({id: item.coverId})">{{item.title}}</a></li>

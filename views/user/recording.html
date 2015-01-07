@@ -6,7 +6,7 @@
       <div ng-repeat="cover in popCovers.list" class="item">
         <div class="control"></div>
         <div hide-lazy="" class="image"><img alt="Cover Image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png" class="lazy"/><img alt="Cover Image" ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}"/>
-          <button class="playback"><i class="icon-play"></i></button>
+          <button ng-click="playback(cover)" class="playback"><i class="icon-play"></i></button>
         </div>
         <ul class="content">
           <li class="title"><a ui-sref="pop.cover({id: cover._id})">{{cover.song.Title}}</a></li>
@@ -36,7 +36,7 @@
       <div ng-repeat="cover in countryCovers.list" class="item">
         <div class="control"></div>
         <div hide-lazy="" class="image"><img alt="Cover Image" data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png" class="lazy"/><img alt="Cover Image" ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}"/>
-          <button class="playback"><i class="icon-play"></i></button>
+          <button ng-click="playback(cover)" class="playback"><i class="icon-play"></i></button>
         </div>
         <ul class="content">
           <li class="title"><a ui-sref="pop.cover({id: cover._id})">{{cover.song.Title}}</a></li>

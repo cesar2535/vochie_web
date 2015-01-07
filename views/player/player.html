@@ -1,0 +1,45 @@
+
+<div id="media-player">
+  <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+  <div id="jp_container_1" ng-class="{ slideUp: toggleStatus==false, slideDown: toggleStatus==true, active: initPlayer }" class="jp-audio">
+    <div ng-init="toggleStatus==undefined" class="toggle-slide">
+      <button ng-click="toggleStatus=!toggleStatus" ng-show="toggleStatus" class="slide-up"><i class="icon-arrow-up"></i></button>
+      <button ng-click="toggleStatus=!toggleStatus" ng-hide="toggleStatus" class="slide-down"><i class="icon-arrow-down"></i></button>
+    </div>
+    <div class="headphone"><i class="icon-headset"></i></div>
+    <div class="jp-type-single">
+      <div class="jp-gui jp-interface">
+        <ul class="jp-controls">
+          <li><a href="javascript:;" ng-click="previous()" tabindex="1" class="jp-previous">Previous </a></li>
+          <li><a href="javascript:;" tabindex="1" class="jp-play">Play</a></li>
+          <li><a href="javascript:;" ng-click="pause()" tabindex="1" class="jp-pause">Pause</a></li>
+          <li><a href="javascript:;" ng-click="next()" tabindex="1" class="jp-next">Next</a></li>
+        </ul>
+        <div class="cover-image">
+          <div class="cover-user"></div>
+          <div class="cover"></div>
+        </div>
+        <div class="track-title">
+          <div class="jp-title">
+            <ul>
+              <li class="songs-title"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="jp-progress-bar">
+          <div class="jp-current-time"></div>
+          <div class="jp-progress">
+            <div class="jp-seek-bar">
+              <div class="jp-play-bar"></div>
+            </div>
+          </div>
+          <div class="jp-duration"></div>
+        </div>
+      </div>
+      <div style="display:none" class="jp-playlist">
+        <ul></ul>
+      </div>
+      <div class="jp-no-solution"><span>Update Required</span>To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" ng-click="$event.stopPropagation()" target="_blank">Flash plugin    </a></div>
+    </div>
+  </div>
+</div>
