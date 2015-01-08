@@ -6,6 +6,21 @@
     .list
       .item(ng-repeat="cover in popCovers.list")
         .control
+          .hide-status(ng-show='cover.status==0')
+            i.icon-lock
+          button.setting.dropdown
+            a.dropdown-toggle(data-toggle="dropdown")
+              i.icon-arrow-down
+            ul.dropdown-menu(role="menu")
+              li(ng-if="isOwner", check-hide="", cover-id="{{cover._id}}")
+                a.hide-cover(ng-if="cover.status == 1")
+                  i.icon-warning
+                  | Hide
+                a.show-cover(ng-if="cover.status == 0")
+                  i.icon-warning
+                  | Show
+              li(ng-if="!isOwner")
+                a None
         .image(hide-lazy='')
           img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png")
           img(alt="Cover Image", ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}")
@@ -44,6 +59,47 @@
     .list
       .item(ng-repeat="cover in countryCovers.list")
         .control
+          .hide-status(ng-show='cover.status==0')
+            i.icon-lock
+          button.setting.dropdown
+            a.dropdown-toggle(data-toggle="dropdown")
+              i.icon-arrow-down
+            ul.dropdown-menu(role="menu")
+              li(ng-if="isOwner", check-hide="", cover-id="{{cover._id}}")
+                a.hide-cover(ng-if="cover.status == 1")
+                  i.icon-warning
+                  | Hide
+                a.show-cover(ng-if="cover.status == 0")
+                  i.icon-warning
+                  | Show
+              //- li(ng-if="isOwner")
+                a
+                  i.icon-remove
+                  | Delete
+              //- li(ng-if="isOwner")
+                a
+                  i.icon-cover
+                  | Change Cover Photo
+              //- li(ng-if="!isOwner")
+                a.pin-cover
+                  i.icon-pushpin
+                  | Pin
+                a.unpin-cover
+                  i.icon-pushpin
+                  | Unpin
+              //- li(ng-if="!isOwner", check-like="", cover-id="{{cover._id}}")
+                a.like-cover
+                  i.icon-like
+                  | Like
+                a.dislike-cover
+                  i.icon-like
+                  | Dislike
+              //- li
+                a
+                  i.icon-share
+                  | Share
+              li(ng-if="!isOwner")
+                a None
         .image(hide-lazy='')
           img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{cover.user_id}}_medium.png")
           img(alt="Cover Image", ng-src="https://do4n1cuexrn6s.cloudfront.net/cover/{{cover._id}}_medium.png{{random}}")

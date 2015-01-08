@@ -1,7 +1,8 @@
-myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieStore', 'apiConfig', 'LoginFctry'
-($rootScope, $http, $timeout, $q, $cookieStore, apiConfig, LoginFctry) ->
+myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieStore', 'apiConfig', 'LoginFctry', 'LikeFctry',
+($rootScope, $http, $timeout, $q, $cookieStore, apiConfig, LoginFctry, LikeFctry) ->
   console.log 'UserFctry'
   checkUserLogin: ->
+    console.info "----- Check User Login -----"
     user = $cookieStore.get 'currentUser'
     if !user
       console.error 'No login user'
@@ -16,6 +17,7 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
         $rootScope.user = {}
         $cookieStore.put 'currentUser', {}
       else
+        $rootScope.user = user
         $rootScope.user.accessToken = user.accessToken
         $rootScope.user.provider = user.provider
         $rootScope.user._id = successRes.data._id
@@ -107,6 +109,21 @@ myApp.factory 'UserFctry', ['$rootScope', '$http', '$timeout', '$q', '$cookieSto
       return successRes.data
     , (errorRes) ->
       console.error "Get Follow List"
+      console.error errorRes
+      return errorRes.data
+
+  getLoginUserPins: ->
+    $http
+      url: apiConfig.rest_url '/pin/mylist'
+      params:
+        token: $rootScope.user.accessToken
+      method: 'get'
+    .then (successRes) ->
+      console.info "----- Get Login User Pins -----"
+      console.log successRes
+      return successRes.data
+    , (errorRes) ->
+      console.error "Get Login User Pins"
       console.error errorRes
       return errorRes.data
       

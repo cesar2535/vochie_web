@@ -2,10 +2,17 @@
   .main-title
     i.icon-pushpin
     span Following
-    span.total(ng-hide='followList.followed.length==0 || followList.followed.length==null') / total: {{followList.followed.length}} 
+    span.total(ng-hide='followList.followed.length==0 || followList.followed==null')  / total: {{followList.followed.length}} 
   .list
     .item(ng-repeat="item in followList.followed")
       .control
+        .follow-btn(ng-show="user._id && !isOwner")
+          a.follow
+            i.icon-follow_0
+            span Follow
+          a.unfollow
+            i.icon-follow_1
+            span Unfollow
       .image(hide-lazy='')
         img.lazy(alt="Cover Image", data-src="https://do4n1cuexrn6s.cloudfront.net/user/{{item.id}}_medium.png")
       ul.content

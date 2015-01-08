@@ -6,6 +6,4 @@ myApp.controller 'PopCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state',
     hotWeekly: []
     hotMonthly:[]
     newRank: []
-
-  UserFctry.checkUserLogin()
 ]

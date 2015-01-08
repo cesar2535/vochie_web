@@ -9,7 +9,7 @@ myApp.controller 'RecordingCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$s
     total: 0
     page: 0
 
-  initializeUserCovers = ->
+  $scope.initializeUserCovers = ->
     CoverFctry.getUserCovers 18, 0, $stateParams.id, 'pop'
     .then (successRes) ->
       console.log successRes
@@ -70,5 +70,7 @@ myApp.controller 'RecordingCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$s
     $rootScope.initPlayer = true
     console.log myPlaylist
 
-  initializeUserCovers()
+  UserFctry.checkUserLogin()
+  .then ->
+    $scope.initializeUserCovers()
 ]

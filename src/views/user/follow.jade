@@ -2,7 +2,7 @@
   .main-title
     i.icon-pushpin
     span Following
-    span.total(ng-hide='followList.follow==0 || followList.follow==null') / total: {{followList.follow.length}} 
+    span.total(ng-hide='followList.follow.length==0 || followList.follow==null')  / total: {{followList.follow.length}} 
   .list
     .item(ng-repeat="item in followList.follow")
       .control

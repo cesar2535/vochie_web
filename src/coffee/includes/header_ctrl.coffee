@@ -1,7 +1,7 @@
-myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', '$location', '$cookieStore', 'LoginFctry', 'UserFctry'
-($scope, $rootScope, $timeout, $q, $state, $location, $cookieStore, LoginFctry, UserFctry) ->
+myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$state', '$location', '$cookieStore', 'LoginFctry', 'UserFctry', 'LikeFctry',
+($scope, $rootScope, $timeout, $q, $state, $location, $cookieStore, LoginFctry, UserFctry, LikeFctry) ->
   $scope.location = ''
-  
+  console.log 'HeaderCtrl'
   checkLocation = ->
     path = $location.path()
     console.log "path search: #{path}"
@@ -21,34 +21,45 @@ myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$stat
     console.log $scope.location
 
 
+  getUserData = ->
+    UserFctry.getUserData()
+    .then (successUserRes) ->
+      console.log successUserRes
+      if successUserRes.status is 'success'
+        $rootScope.user._id = successUserRes.data._id
+        $rootScope.user.name = successUserRes.data.username
+        $rootScope.user.profile = successUserRes.data
+      console.log $rootScope.user
+      $cookieStore.put 'currentUser', $rootScope.user
+      getUserPinsList()
+      getUserLikesList()
+
+  getUserPinsList = ->
+    UserFctry.getLoginUserPins()
+    .then (successRes) ->
+      if successRes.data?
+        $rootScope.user.pinsList = successRes.data.rows
+        $cookieStore.put 'currentUser', $rootScope.user
+
+  getUserLikesList = ->
+    LikeFctry.getLikesList()
+    .then (successRes) ->
+      if successRes.data?
+        $rootScope.user.likesList = successRes.data.rows
+        $cookieStore.put 'currentUser', $rootScope.user
+
   $scope.login = 
     withFacebook: (product) ->
       LoginFctry.loginWithFacebook product
       .then (successLoginRes) ->
         console.log successLoginRes
-        UserFctry.getUserData()
-        .then (successUserRes) ->
-          console.log successUserRes
-          if successUserRes.status is 'success'
-            $rootScope.user._id = successUserRes.data._id
-            $rootScope.user.name = successUserRes.data.username
-            $rootScope.user.profile = successUserRes.data
-          console.log $rootScope.user
-          $cookieStore.put 'currentUser', $rootScope.user
+        getUserData()
 
     withTwitter: (product) ->
       LoginFctry.loginWithTwitter product, (res) ->
         console.log res
         console.log $rootScope.user
-        UserFctry.getUserData()
-        .then (successRes) ->
-          console.log successRes
-          if successRes.status is 'success'
-            $rootScope.user._id = successRes.data._id
-            $rootScope.user.name = successRes.data.username
-            $rootScope.user.profile = successUserRes.data
-          console.log $rootScope.user
-          $cookieStore.put 'currentUser', $rootScope.user
+        getUserData()
 
   $scope.logout = ->
     LoginFctry.logout()
@@ -58,5 +69,6 @@ myApp.controller 'HeaderCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$stat
 
   UserFctry.checkUserLogin()
   .then (successRes) ->
+    getUserData()
     checkLocation()
 ]
